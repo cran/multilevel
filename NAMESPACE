@@ -1,0 +1,4 @@
+exportPattern("^[^\\.]")
+S3method(summary, rgr.agree)
+S3method(summary, rgr.waba)
+S3method(quantile, rgr.waba)

@@ -1,0 +1,37 @@
+\name{summary.rgr.agree}
+\alias{summary.rgr.agree}
+\title{S3 method for class 'rgr.agree'}
+\description{
+This function provides a concise summary of objects created using
+the function rgr.agree. 
+}
+\usage{
+\method{summary}{rgr.agree}(object,\dots)
+}
+\arguments{
+	 \item{object}{An object of class 'rgr.agree'.}
+	 \item{\dots}{Optional additional arguments.  None used.}
+}
+\value{
+
+	\item{Summary Statistics for Random and Real Groups}{Number of random groups, Average random group variance,
+Standard Deviation of random group variance, Actual group variance, z-value}
+	\item{Lower Confidence Intervals (one-tailed)}{Lower confidence intervals based on sorted random group variances.}
+	\item{Upper Confidence Intervals (one-Tailed)}{Upper confidence intervals based on sorted random group variances.} 
+}
+
+\author{
+Paul Bliese
+\email{paul.bliese@us.army.mil}
+}
+
+\seealso{
+ \code{\link{rgr.agree}}
+}
+\examples{
+
+data(bh1996)
+RGROUT<-rgr.agree(bh1996$HRS,bh1996$GRP,1000)
+summary(RGROUT)
+}
+\keyword{programming}
