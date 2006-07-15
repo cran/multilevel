@@ -19,7 +19,7 @@ characteristics of the actual groups, the total number of pseudo groups created
 may be calculated as nreps * Number Actual Groups. The value chosen for nreps only
 affects the smoothness of the pseudo group line -- values greater than 25 should
 provide sufficiently smooth lines.  Values of 1000 should be used if the bootci
-option is TRUE.}
+option is TRUE although only 250 are used in the example for speed purposes.}
  \item{limits}{Controls the upper and lower limits of the y-axis on the plot.
 The default is to set the limits at the 10th and 90th percentiles of the raw data.
 This option only affects how the data is plotted.}
@@ -47,7 +47,7 @@ are calculated and plotted.  If bootci is TRUE, the nreps option should be 1000 
 
 \examples{
    data(bh1996)
-   graph.ran.mean(bh1996$HRS,bh1996$GRP,limits=c(8,16),nreps=1000, bootci=TRUE)
+   graph.ran.mean(bh1996$HRS,bh1996$GRP,limits=c(8,16),nreps=250, bootci=TRUE)
    GRAPH.DAT<-graph.ran.mean(bh1996$HRS,bh1996$GRP,limits=c(8,16),nreps=50,graph=FALSE)
 }
 \keyword{dplot}

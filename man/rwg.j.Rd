@@ -38,8 +38,9 @@ Paul Bliese
 }
 \references{
 Bliese, P. D. (2000).  Within-group agreement, non-independence, and reliability:
- Implications for data aggregation and analysis.  In K. J. Klein & S. W. Kozlowski (Eds.),
-Multilevel Theory, Research, and Methods in Organizations (pp. 349-381). San Francisco, CA:  Jossey-Bass, Inc.
+Implications for data aggregation and analysis.  In K. J. Klein & S. W. Kozlowski (Eds.),
+Multilevel Theory, Research, and Methods in Organizations (pp. 349-381). San Francisco, CA:
+Jossey-Bass, Inc.
 
 James, L.R., Demaree, R.G., & Wolf, G. (1984).  Estimating within-group
 interrater reliability with and without response bias.  Journal of Applied 
@@ -47,9 +48,11 @@ Psychology, 69, 85-98.
 }
 
 \seealso{
- \code{\link{rwg.j}}
+ \code{\link{ad.m}}
+ \code{\link{rwg}}
  \code{\link{rgr.agree}}
  \code{\link{rwg.j.lindell}}
+ \code{\link{rwg.j.sim}}
 }
 
 \examples{

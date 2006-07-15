@@ -49,7 +49,9 @@ interrater reliability with and without response bias.  Journal of Applied
 Psychology, 69, 85-98.
 }
 \seealso{
+ \code{\link{ad.m}}
  \code{\link{rwg.j}}
+ \code{\link{rwg.sim}}
  \code{\link{rgr.agree}}
  \code{\link{rwg.j.lindell}}
 }

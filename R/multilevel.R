@@ -1,3 +1,111 @@
+ad.m<-function (x, grpid,type="mean") 
+{
+NEWDAT <- data.frame(x, grpid = grpid)
+NEWDAT <- na.exclude(NEWDAT)
+DATSPLIT <- split(NEWDAT[, 1:(ncol(NEWDAT) - 1)], NEWDAT$grpid)
+# Code to estimate AD Mean on scales
+    if(ncol(as.matrix(x))>1){
+         ans1 <- lapply(DATSPLIT, function(Q) {
+         if (nrow(Q) > 1) {
+             mean(apply(Q,2,function(AD){
+               sum(abs(AD-eval(call(paste(type),AD))))/length(AD)}))
+         }
+         else {
+            NA
+         }
+    })
+    ans2 <- lapply(DATSPLIT, nrow)
+    ans1 <- unlist(ans1)
+    ans2 <- unlist(ans2)
+    OUTPUT <- data.frame(grpid = names(DATSPLIT), AD.M = ans1, 
+        gsize = ans2)
+    return(OUTPUT)  
+    stop()
+  }
+#Code to estimate AD Mean on single items
+ans1<-lapply(DATSPLIT,function(AD){
+      sum(abs(AD-eval(call(paste(type),AD))))/length(AD)})
+ans2 <- lapply(DATSPLIT, length)
+ans1 <- unlist(ans1)
+ans2 <- unlist(ans2)
+ans1[ans2==1]<-NA
+OUTPUT <- data.frame(grpid = names(DATSPLIT), AD.M = ans1, 
+        gsize = ans2)
+    return(OUTPUT)
+}
+
+########
+
+ad.m.sim<-function (gsize, nitems = 1, nresp, itemcors = NULL, type = "mean", 
+    nrep) 
+{
+    OUT <- rep(NA, nrep)
+    if (nitems == 1 & is.null(itemcors)) {
+        for (i in 1:nrep) {
+            OUT[i] <- ad.m(x = sample(1:nresp, gsize, replace = T), 
+                grpid = rep(1, gsize), type)[, 2]
+        }
+    }
+    if (nitems > 1 & is.null(itemcors)) {
+        for (i in 1:nrep) {
+            OUT[i] <- ad.m(x = matrix(sample(1:nresp, gsize * 
+                nitems, replace = T), ncol = nitems), grpid = rep(1, 
+                gsize), type)[, 2]
+        }
+    }
+    if (!is.null(itemcors)) {
+        nitems <- ncol(itemcors)
+        for (i in 1:nrep) {
+            SIMDAT <- mvrnorm(n = gsize, mu = rep(0, nitems), 
+                itemcors)
+            SIMDAT <- apply(SIMDAT, 2, cut, breaks = qnorm(c(0, 
+                (1/nresp) * 1:nresp)), include.lowest = T, labels = F)
+            OUT[i] <- ad.m(x = SIMDAT, grpid = rep(1, gsize), 
+                type)[, 2]
+        }
+   }
+ cumpct <- cumsum(table(OUT)/length(OUT))
+ lag1 <- c(NA, cumpct[1:length(cumpct) - 1])
+ TDAT <- matrix(c(as.numeric(names(cumpct)),cumpct, lag1,1:length(cumpct)),ncol=4)
+ TR <- TDAT[TDAT[,2] > 0.05 & TDAT[,3] <= 0.05,4]
+ ad.m.05 <- TDAT[TR - 1, 1]
+ estout <- list(ad.m = OUT, gsize = gsize, nresp = nresp, 
+           nitems = nitems, ad.m.05 = ad.m.05, pract.sig = nresp/6)
+ class(estout) <- "disagree.sim"
+ return(estout)
+}
+
+##########
+
+quantile.disagree.sim<-function(x, confint, ...)
+{
+  out<-data.frame(quantile.values=confint,confint.estimate=rep(NA,length(confint)))
+    cumpct<-cumsum(table(x[[1]])/length(x[[1]]))
+    lag1<-c(NA,cumpct[1:length(cumpct)-1])
+    TDAT<-data.frame(dagree.val=as.numeric(names(cumpct)),cumpct,lag1)
+    row.names(TDAT)<-1:nrow(TDAT)
+  for(i in 1:length(confint)){
+     TR<-as.numeric(row.names(TDAT[TDAT$cumpct>confint[i]&TDAT$lag1<=confint[i],]))
+     out[i,2]<-TDAT[TR-1,1]
+  }
+ return(out)
+}
+
+
+##########
+
+summary.disagree.sim<-function(object, ...)
+{
+    out<-list(summary(object[[1]]),
+              object[[2]],
+              object[[3]],
+              object[[4]],
+                  object[[5]],
+              object[[6]])
+    names(out)<-names(object)
+    return(out)
+}
+#########################################################################################
 cordif<-function(rvalue1,rvalue2,n1,n2){
 	zvalue1<-.5*((log(1+rvalue1))-(log(1-rvalue1)))
 	zvalue2<-.5*((log(1+rvalue2))-(log(1-rvalue2)))
@@ -163,14 +271,17 @@ items<-na.exclude(items)
         return(OUT)
 }
 ########################################################################################
-make.univ<-function(x,dvs)
+make.univ<-function (x, dvs, tname="TIME", outname="MULTDV") 
 {
-	NREPOBS<-ncol(dvs)
-	UNIV.DAT<-x[rep(1:nrow(x),rep(NREPOBS,nrow(x))),1:ncol(x)]
-	FINAL.DAT<-cbind(UNIV.DAT,TIME=rep(0:(NREPOBS-1),nrow(x)),
-	MULTDV=as.vector(t(dvs)))
-	return(FINAL.DAT)
+    NREPOBS <- ncol(dvs)        
+    UNIV.DAT <- x[rep(1:nrow(x), rep(NREPOBS, nrow(x))), 1:ncol(x)]
+    FINAL.UNIV <- data.frame(timedat = rep(0:(NREPOBS - 1), 
+        nrow(x)), outdat = as.vector(t(dvs)))
+    names(FINAL.UNIV)<-c(tname,outname)
+    FINAL.DAT <- data.frame(UNIV.DAT, FINAL.UNIV)
+    return(FINAL.DAT)
 }
+
 ########################################################################################
 mix.data<-function (x, grpid) 
 {
@@ -483,6 +594,93 @@ out
     OUTPUT <- data.frame(grpid=names(DATSPLIT),rwg.lindell = ans1, gsize = ans2)
     return(OUTPUT)
 }
+
+
+
+##########################################################################
+#  Following functions pertain to simulating various agreement values    #
+##########################################################################
+
+rwg.sim<-function (gsize, nresp, nrep) 
+{
+    OUT <- rep(NA, nrep)
+    for (i in 1:nrep) {
+        OUT[i] <- rwg(x = sample(1:nresp, gsize, replace = T), 
+            grpid = rep(1, gsize), ranvar = (nresp^2 - 1)/12)[,2]
+    }
+    cumpct <- cumsum(table(OUT)/length(OUT))
+    lag1 <- c(NA, cumpct[1:length(cumpct) - 1])
+    lag2 <- c(NA, lag1[1:length(lag1) - 1])
+    TDAT <- matrix(c(as.numeric(names(cumpct)),cumpct,lag1,lag2),ncol=4)
+    rwg.95 <- TDAT[TDAT[,2] > 0.95 & TDAT[,3] >= 0.95 & TDAT[,4] < 0.95, 1]
+    estout <- list(rwg = OUT, gsize = gsize, nresp = nresp, 
+        nitems = 1, rwg.95 = rwg.95)
+    class(estout) <- "agree.sim"
+    return(estout)
+}
+
+#######
+
+rwg.j.sim<-function(gsize, nitems, nresp, itemcors = NULL, nrep) 
+{
+    OUT <- rep(NA,nrep)
+    if (is.null(itemcors)) {
+        for (i in 1:nrep) {
+            OUT[i] <- rwg.j(x = matrix(sample(1:nresp, gsize * 
+                nitems, replace = T), ncol = nitems), grpid = rep(1, 
+                gsize), ranvar = (nresp^2 - 1)/12)[, 2]
+        }
+    }
+    if (!is.null(itemcors)){
+        for (i in 1:nrep) {
+           nitems <- ncol(itemcors)
+           SIMDAT <- mvrnorm(n = gsize, mu = rep(0, nitems), itemcors)
+           SIMDAT <- apply(SIMDAT, 2, cut, breaks = qnorm(c(0, (1/nresp) * 
+                1:nresp)), include.lowest = T, labels = F)
+           OUT[i] <- rwg.j(SIMDAT, grpid = rep(1, gsize), ranvar = ((nresp^2 - 
+            1)/12))[, 2]
+        }
+    }
+    cumpct <- cumsum(table(OUT)/length(OUT))
+    lag1 <- c(NA, cumpct[1:length(cumpct) - 1])
+    lag2 <- c(NA, lag1[1:length(lag1) - 1])
+    TDAT <- matrix(c(as.numeric(names(cumpct)),cumpct,lag1,lag2),ncol=4)
+    rwg.95 <- TDAT[TDAT[,2] > 0.95 & TDAT[,3] >= 0.95 & TDAT[,4] < 0.95, 1]
+    estout <- list(rwg = OUT, gsize = gsize, nresp = nresp, 
+        nitems = 1, rwg.95 = rwg.95)
+    class(estout) <- "agree.sim"
+    return(estout)
+}
+
+
+########
+
+summary.agree.sim<-function(object, ...)
+{
+    out<-list(summary(object[[1]]),
+              object[[2]],
+              object[[3]],
+              object[[4]],
+              object[[5]])
+    names(out)<-names(object)
+    return(out)
+}
+
+########
+
+quantile.agree.sim<-function(x, confint, ...)
+{
+  out<-data.frame(quantile.values=confint,confint.estimate=rep(NA,length(confint)))
+    cumpct<-cumsum(table(x[[1]])/length(x[[1]]))
+    lag1<-c(NA,cumpct[1:length(cumpct)-1])
+    lag2<-c(NA,lag1[1:length(lag1)-1])
+    TDAT<-data.frame(agree.val=as.numeric(names(cumpct)),cumpct,lag1,lag2)
+  for(i in 1:length(confint)){
+    out[i,2]<-TDAT[TDAT$cumpct>confint[i]&TDAT$lag1>=confint[i]&TDAT$lag2<confint[i],1]
+  }
+ return(out)
+}
+
 ###################################################################################
 simbias<-function(corr, gsize, ngrp, icc1x, icc1y, nrep)
 {
