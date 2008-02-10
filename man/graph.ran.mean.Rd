@@ -12,7 +12,7 @@ graph.ran.mean(x, grpid, nreps, limits, graph=TRUE, bootci=FALSE)
 
 \arguments{
  \item{x}{The vector representing the construct of interest.}
- \item{grpid}{A vector identifying the groups from which x originated.}
+ \item{grpid}{A vector identifying the groups associated with x.}
  \item{nreps}{A number representing the number of random groups to generate.
 Because groups are created with the exact size
 characteristics of the actual groups, the total number of pseudo groups created
@@ -34,7 +34,8 @@ are calculated and plotted.  If bootci is TRUE, the nreps option should be 1000 
 
 \value{Produces either a plot (graph=TRUE) or a data.frame (graph=FALSE)}
 
-\references{Bliese, P. D., & Halverson, R. R. (2002).  Using random group resampling in multilevel research.  Leadership Quarterly, 13, 53-68.}
+\references{Bliese, P. D., & Halverson, R. R. (2002).  Using random group resampling in
+multilevel research.  Leadership Quarterly, 13, 53-68.}
 
 \author{ Paul Bliese
  \email{paul.bliese@us.army.mil}}
@@ -46,8 +47,9 @@ are calculated and plotted.  If bootci is TRUE, the nreps option should be 1000 
 }
 
 \examples{
-   data(bh1996)
-   graph.ran.mean(bh1996$HRS,bh1996$GRP,limits=c(8,16),nreps=250, bootci=TRUE)
-   GRAPH.DAT<-graph.ran.mean(bh1996$HRS,bh1996$GRP,limits=c(8,16),nreps=50,graph=FALSE)
+data(bh1996)
+with(bh1996,graph.ran.mean(HRS,GRP,limits=c(8,16),nreps=250, bootci=TRUE))
+GRAPH.DAT<-graph.ran.mean(bh1996$HRS,bh1996$GRP,limits=c(8,16),nreps=50,
+           graph=FALSE)
 }
 \keyword{dplot}

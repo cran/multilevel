@@ -1,6 +1,6 @@
 \name{ICC2}
 \alias{ICC2}
-\title{Function to Estimate Intraclass Correlation Coefficient 2 or ICC(2) from aov model}
+\title{Function to Estimate Intraclass Correlation Coefficient 2 or ICC(2) from an aov model}
 \description{This function calculates the Intraclass Correlation Coefficient 2 or ICC(2)
 from an ANOVA model.  This value represents the reliability of the group
 means.

@@ -38,9 +38,10 @@ Sociological Association.}
 }
 
 \examples{
-   data(bh1996)
-   sobel(pred=bh1996$HRS,med=bh1996$LEAD,out=bh1996$WBEING)
-   #A small but significant indirect effect indicates leadership mediates
-   #the relationship between work hours and well-being.
+data(bh1996)
+
+#A small but significant indirect effect indicates leadership mediates
+#the relationship between work hours and well-being.
+sobel(pred=bh1996$HRS,med=bh1996$LEAD,out=bh1996$WBEING)
 }
 \keyword{htest}

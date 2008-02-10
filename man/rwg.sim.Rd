@@ -26,11 +26,11 @@ although the examples use nrep of 1000 to make the calculations fast.}
 	\item{gsize}{Group size used in the rwg simulation.}
 	\item{nresp}{Simulated number of response options.}
 	\item{nitems}{Will always be 1 for an rwg estimate.}
-	\item{rwg.95}{Estimated 95% confidence interval estimate associated with a p-value of .05.  Values
-greater than or equal to the rwg.95 value are considered significant.}
-}
+	\item{rwg.95}{Estimated 95 percent confidence interval. Values
+greater than or equal to rwg.95 are considered significant, p<.05.}
 
 }
+
 \author{
 Paul Bliese
 \email{paul.bliese@us.army.mil}
@@ -59,7 +59,7 @@ Psychology, 69, 85-98.
 
 \examples{
 #An example from Dunlap et al. (2003).  The estimate from Dunlap
-#et al.'s (2003) Table 2 is 0.53 (p=.05)
+#et al. Table 2 is 0.53 (p=.05)
 RWG.OUT<-rwg.sim(gsize=10,nresp=5,nrep=1000)
 summary(RWG.OUT)
 quantile(RWG.OUT, c(.95,.99))

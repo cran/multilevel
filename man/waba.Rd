@@ -3,7 +3,7 @@
 \title{Covariance Theoreom Decomposition of Bivariate Two-Level Correlation}
 \description{
 This routine performs the covariance theorem decomposition discussed by
-Robinson (1950) and Dansereau, Alutto & Yammarino (1984).  Dansereau et al.
+Robinson (1950) and Dansereau, Alutto and Yammarino (1984).  Dansereau et al.
 have labeled the variance decomposition Within-And-Between-Analysis II or
 WABA II.  The program decomposes a raw correlation from a two-level nested design
 into 6 components.  These components are (1) eta-between value for X, (2) eta-between
@@ -19,7 +19,7 @@ Number of Observations) provided as part of the output.
 Note that Within-And-Between-Analysis proposed by Dansereau et al.
 involves more than covariance theorem decomposition of correlations.
 Specifically, WABA involves decision rules based on eta-values.  These
-are not replicated in the R mulilevel library because the eta based
+are not replicated in the R multilevel library because the eta based
 decision rules have been shown to be highly related to group size (Bliese,
 2000; Bliese & Halverson, 1998), a factor not accounted for in the complete
 Within-And-Between-Analysis methodology.

@@ -9,12 +9,11 @@ the functions rwg.sim and rwg.j.sim.
 \method{summary}{agree.sim}(object,\dots)
 }
 \arguments{
-	 \item{object}{An object of class 'agree.sim'.}
-	 \item{\dots}{Optional additional arguments.  None used.}
+	\item{object}{An object of class 'agree.sim'.}
+	\item{\dots}{Optional additional arguments.  None used.}
 }
 \value{
-
-	\item{A summary of all the output elements in the agree.sim class object.}
+  A summary of all the output elements in the agree.sim class object.
 }
 
 \author{
@@ -27,7 +26,7 @@ Paul Bliese
  \code{\link{rwg.j.sim}}
 }
 \examples{
-#An example from Dunlap et al. (2003).  The estimate from Dunlap et al.'s (2003)
+#An example from Dunlap et al. (2003).  The estimate from Dunlap et al.
 #Table 2 is 0.53
 RWG.OUT<-rwg.sim(gsize=10,nresp=5,nrep=1000)
 summary(RWG.OUT)

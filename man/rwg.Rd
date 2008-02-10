@@ -3,10 +3,10 @@
 \title{James et al., (1984) agreement index for single item measures}
 \description{
 This function calculates the within group agreement measure rwg for single
-item measures as described in James, Demaree & Wolf (1984).  The rwg is calculated
+item measures as described in James, Demaree and Wolf (1984).  The rwg is calculated
 as rwg = 1-(Observed Group Variance/Expected Random Variance).  James et al. (1984)
 recommend truncating the Observed Group Variance to the Expected Random Variance in
-cases where the Observed Group Variance is larger than the Expected Random Variance.
+cases where the Observed Group Variance was larger than the Expected Random Variance.
 This truncation results in an rwg value of 0 (no agreement) for groups with large
 variances.
 }
@@ -14,9 +14,7 @@ variances.
 rwg(x, grpid, ranvar=2)
 }
 \arguments{
- \item{x}{The vector representing the construct of interest.  This is the
-variable about which one is interested in determining whether or
-not group members agree.}
+ \item{x}{A vector representing the construct on which to estimate agreement.}
  \item{grpid}{A vector identifying the groups from which x originated.}
  \item{ranvar}{The random variance to which actual group variances are compared.
 The value of 2 represents the variance from a rectangular
@@ -25,9 +23,8 @@ Strongly Disagree, Disagree, Neither, Agree, Strongly Agree).
 In cases where there are not 5 response options, the rectangular
 distribution is estimated using the formula
 \eqn{\mathtt{ranvar}=(A^{2}-1)/12}{ranvar=(A^2-1)/12} where
-A is the number of response options.  Note that one is not limited
-to the rectangular distribution; rather, one can include any 
-appropriate random value for ranvar.}
+A is the number of response options.  While the rectangular distribution is
+widely used, other random values may be more appropriate.}
 }
 \value{
 	\item{grpid}{The group identifier}

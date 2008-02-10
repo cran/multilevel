@@ -5,8 +5,8 @@
 \description{
 This data set contains five cohesion measures provided by 11 individuals.  The individuals
 providing the measures are members of four platoons further nested within two larger units.  This
-data file is used for demonstative purposes in the document "Multilevel Modeling in R:  A brief
-introduction to R, the multilevel package, and the nlme package" written by Paul Bliese.
+data file is used for demonstative purposes in the document "Multilevel Modeling in R" that
+accompanies this package.
 }
 \usage{data(cohesion)}
 \format{A data frame with 7 columns and 11 observations
@@ -20,7 +20,4 @@ introduction to R, the multilevel package, and the nlme package" written by Paul
 [,7] \tab COH05   \tab numeric  \tab Fifth Cohesion Variable\cr
 }
 }
-\references{
-Bliese, P. D. (2005).  Multilevel Modeling in R:  A Brief Introduction to R, the multilevel Package,
-and the nlme package.  Walter Reed Army Institute of Research.}
 \keyword{datasets}

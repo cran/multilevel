@@ -4,7 +4,7 @@
 \title{Data from Bliese and Ployhart (2002)}
 \description{
 This data set contains the complete data set used in Bliese and Ployhart (2002).  The data is longitudinal data
-converted to univariate (i.e., stacked) form.  There are 3 data points.
+converted to univariate (i.e., stacked) form.  Data were collected at three time points.
 }
 \usage{data(univbct)}
 \format{A data frame with 22 columns and 1485 observations from 495 individuals

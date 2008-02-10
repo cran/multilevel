@@ -10,9 +10,9 @@ The function returns a t-value, the DF and the p-value.
 cordif.dep(r.x1y,r.x2y,r.x1x2,n)
 }
 \arguments{
- \item{r.x1y}{The correlation between x1 and y where y is typically your outcome variable.}
- \item{r.x2y}{The correlation between x2 and y where y is typically your outcome variable.}
- \item{r.x1x2}{The correlation between x1 and x2 (the correlation between your two predictors).}
+ \item{r.x1y}{The correlation between x1 and y where y is typically the outcome variable.}
+ \item{r.x2y}{The correlation between x2 and y where y is typically the outcome variable.}
+ \item{r.x1x2}{The correlation between x1 and x2 (the correlation between the two predictors).}
  \item{n}{The sample size.}
 }
 \value{

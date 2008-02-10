@@ -6,7 +6,7 @@
 item.total(items)
 }
 \arguments{
-  \item{items}{A matrix or data frame where each column represents an item in a multi-item scale.}
+  \item{items}{A matrix or dataframe where each column represents an item in a multi-item scale.}
 }
 \value{
 	\item{Variable}{Variable examined in the reliability analyses.}
@@ -20,13 +20,10 @@ the internal structure of tests. Psychometrika, 16,297-334}
 \author{ Paul Bliese
  \email{paul.bliese@us.army.mil}}
 
-
 \seealso{\code{\link{cronbach}}}
 
-
-}
 \examples{
    data(bhr2000)
-   item.total(bhr2000[,2:11])
-}
+   item.total(bhr2000[,2:11])}
+
 \keyword{attribute}

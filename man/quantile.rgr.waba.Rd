@@ -11,7 +11,7 @@ the function rgr.waba.
 \arguments{
 	 \item{x}{An object of class 'rgr.waba'.}
 	 \item{confint}{The confidence intervals to return.  The values of 0.025 and 0.975
-	   return the approximate 95th percentile confidence intervals
+	   return the approximate two-tailed 95th percentile confidence intervals
 	   (p=.05).}
 	 \item{\dots}{Optional arguments.  None used.}
 }
@@ -29,8 +29,12 @@ Paul Bliese
 }
 \examples{
 data(bh1996)
-waba(bh1996$HRS,bh1996$WBEING,bh1996$GRP)        #estimate the actual group model
-RWABA<-rgr.waba(bh1996$HRS,bh1996$WBEING,bh1996$GRP,100)  #create 100 pseudo group runs
+
+#estimate the model based on actual group membership
+waba(bh1996$HRS,bh1996$WBEING,bh1996$GRP)
+
+#create 100 pseudo group runs and summarize        
+RWABA<-rgr.waba(bh1996$HRS,bh1996$WBEING,bh1996$GRP,100)  
 quantile(RWABA,confint=c(.025,.975))  
 }
 \keyword{programming}

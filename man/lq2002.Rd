@@ -3,14 +3,15 @@
 \alias{lq2002}
 \title{Data used in special issue of Leadership Quarterly, Vol. 13, 2002}
 \description{
-This dataset contains the complete data used in a special issue of leadership quarterly edited
+This dataset contains the complete data used in a special issue of Leadership Quarterly edited
 by Paul Bliese, Ronald Halverson and Chet Schriesheim in 2002 (Vol 13).  Researchers from several
 universities analyzed this common dataset using various multilevel techniques.  The three
 scales used in the analyses are Leadership Climate (LEAD), Task Significance (TSIG) and Hostility
-(HOSTILE).  The data set contains each item making up these scales.
+(HOSTILE).  The data set contains each item making up these scales.  These items were used by
+Cohen, Doveh and Nahum-Shani (2009).
 }
 \usage{data(lq2002)}
-}
+
 \format{A data frame with 27 columns and 2,042 observations from 49 groups
 \tabular{llll}{
 [,1] \tab COMPID  \tab numeric  \tab Army Company Identifying Variable\cr
@@ -43,8 +44,13 @@ scales used in the analyses are Leadership Climate (LEAD), Task Significance (TS
 }
 }
 \references{
-Bliese, P. D., & Halverson, R. R. (2002).  Using random group resampling in multilevel research.  Leadership Quarterly, 13, 53-68.
+Bliese, P. D., & Halverson, R. R. (2002).  Using random group resampling in multilevel
+research.  Leadership Quarterly, 13, 53-68.
 
-Bliese, P. D., Halverson, R. R., & Schriesheim, C. A. (2002).  Benchmarking multilevel methods:  Comparing HLM, WABA, SEM, and RGR.  Leadership Quarterly, 13, 3-14.
+Bliese, P. D., Halverson, R. R., & Schriesheim, C. A. (2002).  Benchmarking multilevel
+methods:  Comparing HLM, WABA, SEM, and RGR.  Leadership Quarterly, 13, 3-14.
+
+Cohen, A., Doveh, E., & Nahum-Shani, I. (2009).  Testing agreement for multi-item scales
+with the indices rwg(j) and adm(j).  Organizational Research Methods, 12, 148-164.
 }
 \keyword{datasets}

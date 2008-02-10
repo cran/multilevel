@@ -2,19 +2,19 @@
 \alias{rwg.j.sim}
 \title{Simulate rwg(j) values from a random null distribution}
 \description{
-This function is based on the work of Cohen, Doveh & Eick (2001) and Cohen, Doveh & Shani (2006).
-The function draws data from a random uniform null distribution, and calculates the James, Demaree
-& Wolf (1984) within group agreement measure rwg(j) for multiple item scales.  By repeatedly
-drawing random samples, a distribution of the rwg(j) is generated.  The sampling
+This function is based on the work of Cohen, Doveh and Eick (2001) and Cohen, Doveh and Nahum-Shani
+(2009).  The function draws data from a random uniform null distribution, and calculates the James,
+Demaree and Wolf (1984) within group agreement measure rwg(j) for multiple item scales.  By
+repeatedly drawing random samples, a distribution of the rwg(j) is generated.  The sampling
 distribution can be used to calculate confidence intervals for different combinations of group
-sizes and number of items (J).  Users provide the number of response options (A) and the number of
-random samples.  By default, items (J) drawn in the simulation are independent (non-correlated);
-however, an optional argument (itemcors) allows one to specify a correlation matrix with
-relationships among items.  Cohen et al. (2001) show that values of rwg(j) are primarily a
-function of the number of items and the group size and are not strongly influenced by
+sizes and number of items (J).  Users provide the number of scale response options (A) and the
+number of random samples.  By default, items (J) drawn in the simulation are independent
+(non-correlated); however, an optional argument (itemcors) allows the user to specify a correlation
+matrix with relationships among items.  Cohen et al. (2001) show that values of rwg(j) are primarily
+a function of the number of items and the group size and are not strongly influenced by
 correlations among items; nonetheless, assuming correlations among items is more realistic and
-thereby is a preferred model also used in COhen et al. (2006).  If item correlations
-are provided, the mvrnorm function in the MASS library is needed. 
+thereby is a preferred model (see Cohen et al., 2009).  If item correlations are provided, the MASS
+library also needs to be attached. 
 }
 \usage{
 rwg.j.sim(gsize, nitems, nresp, itemcors=NULL, nrep)
@@ -38,19 +38,18 @@ only 1,000 are used in the examples to increase the speed.}
 	\item{nresp}{Simulated number of response options.}
 	\item{nitems}{Number of items in the multiple item scale. Either provided in the call or
 calculated from the correlation matrix, if given.}
-	\item{rwg.j.95}{Estimated 95% confidence interval estimate associated with a p-value of .05.  Values
-greater than or equal to the rwg.95 value are considered significant.}
+	\item{rwg.j.95}{95 percent confidence interval estimate associated with a p-value of .05.  Values
+greater than or equal to the rwg.j.95 value are considered significant.}
 }
 
-}
+
 \author{
 Paul Bliese
 \email{paul.bliese@us.army.mil}
 }
 \references{
-Cohen, A., Doveh, E. & Nahum-Shani, I. (2006).  Testing agreement for multi-item scales
-with the indices rwg(j) and adm(j).  Israel Institute of Technology, Haifa. 
-
+Cohen, A., Doveh, E., & Nahum-Shani, I. (2009).  Testing agreement for multi-item scales
+with the indices rwg(j) and adm(j).  Organizational Research Methods, 12, 148-164.
 
 Cohen, A., Doveh, E., & Eick, U. (2001).  Statistical properties of the rwg(j)
 index of agreement.  Psychological Methods, 6, 297-310.

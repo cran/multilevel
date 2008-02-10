@@ -26,8 +26,12 @@ Paul Bliese
 }
 \examples{
 data(bh1996)
-waba(bh1996$HRS,bh1996$WBEING,bh1996$GRP)        #estimate the actual group model
-RWABA<-rgr.waba(bh1996$HRS,bh1996$WBEING,bh1996$GRP,100)  #create 100 pseudo group runs
+
+#estimate the actual group model
+waba(bh1996$HRS,bh1996$WBEING,bh1996$GRP)
+
+#create 100 pseudo group runs and summarize results
+RWABA<-rgr.waba(bh1996$HRS,bh1996$WBEING,bh1996$GRP,100)
 summary(RWABA)  
 }
 \keyword{programming}

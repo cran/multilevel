@@ -9,10 +9,9 @@ item measures as described in James, Demaree & Wolf (1984).
 rwg.j(x, grpid, ranvar=2)
 }
 \arguments{
- \item{x}{A matrix representing the scale of interest upon which one is interested
-in estimating agreement.  Each column of the matrix represents a separate scale item,
-and each row represents an individual respondent.}
- \item{grpid}{A vector identifying the groups from which x originated.}
+ \item{x}{A matrix representing the scale items.  Each column of the matrix
+represents a separate item, and each row represents an individual respondent.}
+ \item{grpid}{A vector identifying the group from which x originated.}
  \item{ranvar}{The random variance to which actual group variances are compared.
 The value of 2 represents the variance from a rectangular
 distribution in the case where there are 5 response options (e.g.,
@@ -31,7 +30,6 @@ appropriate random value for ranvar.}
 	\item{gsize}{The group size}
 }
 
-}
 \author{
 Paul Bliese
 \email{paul.bliese@us.army.mil}

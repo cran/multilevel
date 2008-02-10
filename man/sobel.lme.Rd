@@ -8,7 +8,7 @@ associated with the indirect effect, and the corresponding z-value.  The estimat
 upon three models as detailed on page 84 of MacKinnon, Lockwood, Hoffman, West and Sheets (2002). By
 estimating the three models in a two-level lme framework, one can account for the effects of 
 hierarchical nesting in the data, and thereby obtain more accurate estimates of standard errors (see
-Bliese and Hanges, 2002).}
+Bliese & Hanges, 2004).}
 
 \usage{
 sobel.lme(pred, med, out, grpid)
@@ -22,10 +22,10 @@ sobel.lme(pred, med, out, grpid)
 }
 
 \value{
-	\item{Model.1}{A summary of coefficients from Model 1 of MacKinnon et al., (2002).}
-	\item{Model.2}{A summary of coefficients from Model 2 of MacKinnon et al., (2002).}
-	\item{Model.3}{A summary of coefficients from Model 3 of MacKinnon et al., (2002).}
-	\item{Indirect.Effect}{The estimate of the indirect mediating effect.}
+	\item{Model.1}{Summary of coefficients from Model 1 of MacKinnon et al.}
+	\item{Model.2}{Summary of coefficients from Model 2 of MacKinnon et al.}
+	\item{Model.3}{Summary of coefficients from Model 3 of MacKinnon et al.}
+	\item{Indirect.Effect}{Estimate of indirect mediating effect.}
 	\item{SE}{Sobel's (1982) Standard Error estimate.}
 	\item{z.value}{The estimated z-value.}
 	\item{N}{The number of observations used in model estimation.}
@@ -50,9 +50,12 @@ Sociological Association.}
 }
 
 \examples{
-   data(bh1996)
-   library(nlme)
-   sobel.lme(pred=bh1996$HRS,med=bh1996$LEAD,out=bh1996$WBEING,grpid=bh1996$GRP)
-   #A small but significant indirect effect indicates leadership mediates
-   #the relationship between work hours and well-being.}
+data(bh1996)
+library(nlme)
+
+#A small but significant indirect effect indicates leadership mediates
+#the relationship between work hours and well-being.
+
+with(bh1996, sobel.lme(pred=HRS,med=LEAD,out=WBEING,grpid=GRP))
+}
 \keyword{htest}

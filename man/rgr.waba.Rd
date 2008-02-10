@@ -3,7 +3,7 @@
 \title{Random Group Resampling of Covariance Theorem Decomposition}
 \description{
 This routine performs the covariance theorem decomposition discussed by
-Robinson (1950) and Dansereau, Alutto & Yammarino (1984), but builds upon
+Robinson (1950) and Dansereau, Alutto and Yammarino (1984), but builds upon
 this work by incorporating Random Group Resampling or RGR.  RGR is used
 to randomly assign individuals to pseudo groups.  This creates sampling
 distributions of the covariance theorem components, and allows one to
@@ -55,9 +55,15 @@ individuals.  American Sociological Review, 15, 351-357.
 # be estimated using the quantile command.
 
 data(bh1996)
-waba(bh1996$HRS,bh1996$WBEING,bh1996$GRP)        #estimate the actual group model
-RWABA<-rgr.waba(bh1996$HRS,bh1996$WBEING,bh1996$GRP,100)  #create 100 pseudo group runs
-summary(RWABA)                     #summarize the model
-quantile(RWABA,c(.025,.975))       #95th percentile confidence intervals (p=.05)
+
+#estimate the actual group model
+waba(bh1996$HRS,bh1996$WBEING,bh1996$GRP)
+
+#create 100 pseudo group runs and summarize the model        
+RWABA<-rgr.waba(bh1996$HRS,bh1996$WBEING,bh1996$GRP,100)  
+summary(RWABA)
+
+#Estimate 95th percentile confidence intervals (p=.05)                     
+quantile(RWABA,c(.025,.975))       
 }
 \keyword{attribute}

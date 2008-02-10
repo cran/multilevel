@@ -299,7 +299,7 @@ mult.icc<-function (x, grpid)
 {
     ans <- data.frame(Variable = names(x[, 1:ncol(x)]), ICC1 = as.numeric(rep(NA, 
         ncol(x))), ICC2 = as.numeric(rep(NA, ncol(x))))
-    GSIZE <- mean(tapply(grpid, grpid, length))
+    GSIZE <- mean(aggregate(grpid, list(grpid), length)[,2])
     for (i in 1:ncol(x)) {
         DV <- x[, i]
         tmod <- lme(DV ~ 1, random = ~1 | grpid, na.action = na.omit)

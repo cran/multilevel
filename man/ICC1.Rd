@@ -1,6 +1,6 @@
 \name{ICC1}
 \alias{ICC1}
-\title{Function to Estimate Intraclass Correlation Coefficient 1 or ICC(1) from aov model}
+\title{Function to Estimate Intraclass Correlation Coefficient 1 or ICC(1) from an aov model}
 \description{This function calculates the Intraclass Correlation Coefficient 1 or ICC(1)
 from an ANOVA model.  This value is equivalent to the ICC discussed in the
 random coefficient modeling literature, and represents the amount of 

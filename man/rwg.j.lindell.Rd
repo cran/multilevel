@@ -3,7 +3,7 @@
 \title{Lindell et al. r*wg(j) agreement index for multi-item scales}
 \description{
 This function calculates the Lindell et al r*wg(j) within-group agreement index for multiple
-item measures.  It is similar to the James, Demaree & Wolf (1984) rwg and rwg(j) indices.  The
+item measures.  It is similar to the James, Demaree and Wolf (1984) rwg and rwg(j) indices.  The
 r*wg(j) index is calculated by taking the average item variability as the Observed Group Variance, and using the
 average item variability in the numerator of the rwg formula (rwg=1-(Observed Group Variance/
 Expected Random Variance)).  In practice, this means that the r*wg(j) does not increase as the number of items in the 
@@ -47,6 +47,7 @@ Paul Bliese
 James, L.R., Demaree, R.G., & Wolf, G. (1984).  Estimating within-group
 interrater reliability with and without response bias.  Journal of Applied 
 Psychology, 69, 85-98.
+
 Lindell, M. K. & Brandt, C. J. (1999).  Assessing interrater agreement on 
 the job relevance of a test: A comparison of CVI, T, rWG(J), and r*WG(J) indexes.
 Journal of Applied Psychology, 84, 640-647.

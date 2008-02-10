@@ -5,7 +5,7 @@
 If group sizes are identical, the group-mean reliabilty estimate equals the ICC(2) estimate from an
 ANOVA model.  When group sizes differ, however, a group-mean reliability estimate
 is calculated for each group based on the group size.  The group-mean reliability estimate for each group
-is based upon the Spearman-Brown formula, the overall ICC and group size for each individual group.
+is based upon the Spearman-Brown formula, the overall ICC, and group size for each group.
 }
 \usage{
 GmeanRel(object)
