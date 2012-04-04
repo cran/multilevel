@@ -12,9 +12,9 @@ mix.data(x,grpid)
   \item{grpid}{A vector containing a group identifier.}
 }
 \value{
-	\item{newid}{A pseudo group ID.}
-	\item{grpid}{The real group ID.}
-	\item{x}{The values in x arranged as belonging to newid}.
+	\item{newid}{ A pseudo group ID.}
+	\item{grpid}{ The real group ID.}
+	\item{x}{ The values in x arranged as belonging to newid.}
 }
 \references{Bliese, P. D., & Halverson, R. R. (2002).  Using random group resampling in multilevel research.  Leadership Quarterly, 13, 53-68.}
 

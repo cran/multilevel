@@ -6,7 +6,9 @@ This function uses random group resampling (RGR) to estimate within group
 agreement.  RGR agreement compares within group variances from
 actual groups to within group variances from pseudo groups.  Evidence of
 significant agreement is inferred when variances from the actual groups
-are significantly smaller than variances from pseudo groups. 
+are significantly smaller than variances from pseudo groups. RGR agreement
+methods are rarely reported, but provide another way to consider group
+level properties in data.
 }
 \usage{
 rgr.agree(x, grpid, nrangrps)
@@ -43,6 +45,10 @@ research.  Leadership Quarterly, 13, 53-68.
 Bliese, P.D., Halverson, R. R., & Rothberg, J. (2000).  Using random
 group resampling (RGR) to estimate within-group agreement with examples
 using the statistical language R.  Walter Reed Army Institute of Research.
+
+Ludtke, O. & Robitzsch, A. (2009).  Assessing within-group agreement:  A
+critical examination of a random-group resampling approach.  Organizational
+Research Methods, 12, 461-487.
 }
 \seealso{
  \code{\link{rwg}}

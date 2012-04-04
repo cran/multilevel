@@ -12,15 +12,11 @@ the function ad.m.sim.
 	\item{object}{An object of class 'disagree.sim'.}
 	\item{\dots}{Optional additional arguments.  None used.}
 }
-\value{
-  A summary of all the output elements in the disagree.sim class object.
-}
-
+\value{A summary of all the output elements in the disagree.sim class object.}
 \author{
 Paul Bliese
 \email{paul.bliese@us.army.mil}
 }
-
 \seealso{
  \code{\link{ad.m.sim}}
 }

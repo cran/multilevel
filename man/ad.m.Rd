@@ -15,7 +15,7 @@ ad.m(x, grpid, type="mean")
 }
 \arguments{
  \item{x}{A vector representing a single item or a matrix representing a scale of interest.
-If a matrix, each column of the matrix represents a scale item,and each row represents
+If a matrix, each column of the matrix represents a scale item, and each row represents
 an individual respondent.}
  \item{grpid}{A vector identifying the groups from which x originated.}
  \item{type}{A character string for either the mean or median.}

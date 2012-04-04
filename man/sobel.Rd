@@ -9,15 +9,15 @@ upon three models as detailed on page 84 of MacKinnon, Lockwood, Hoffman, West a
 sobel(pred,med,out)
 }
 \arguments{
-  \item{pred}{The predictor or independent variable.}
-  \item{med}{The mediating variable.}
-  \item{out}{The outcome or dependent variable.}
+  \item{pred}{The predictor or independent variable (X).}
+  \item{med}{The mediating variable (M).}
+  \item{out}{The outcome or dependent variable (Y).}
 }
 
 \value{
-	\item{Model.1}{A summary of coefficients from Model 1 of MacKinnon et al., (2002).}
-	\item{Model.2}{A summary of coefficients from Model 2 of MacKinnon et al., (2002).}
-	\item{Model.3}{A summary of coefficients from Model 3 of MacKinnon et al., (2002).}
+	\item{Mod1: Y~X}{A summary of coefficients from Model 1 of MacKinnon et al., (2002).}
+	\item{Mod2: Y~X+M}{A summary of coefficients from Model 2 of MacKinnon et al., (2002).}
+	\item{Mod3: M~X}{A summary of coefficients from Model 3 of MacKinnon et al., (2002).}
 	\item{Indirect.Effect}{The estimate of the indirect mediating effect.}
 	\item{SE}{Sobel's (1982) Standard Error estimate.}
 	\item{z.value}{The estimated z-value.}
@@ -33,9 +33,6 @@ Sociological Association.}
 
 \author{ Paul Bliese
  \email{paul.bliese@us.army.mil}}
-
-\seealso{  \code{\link{sobel.lme}}
-}
 
 \examples{
 data(bh1996)

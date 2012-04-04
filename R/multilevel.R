@@ -106,6 +106,72 @@ summary.disagree.sim<-function(object, ...)
     return(out)
 }
 #########################################################################################
+awg<-function (x, grpid, range = c(1, 5)) 
+{
+    NEWDAT <- data.frame(x, grpid = grpid)
+    NEWDAT <- na.exclude(NEWDAT)
+    DATSPLIT <- split(NEWDAT[, 1:(ncol(NEWDAT) - 1)], NEWDAT$grpid)
+    if (ncol(as.matrix(x)) > 1) {
+        ans1 <- lapply(DATSPLIT, function(Q) {
+            if (nrow(Q) > 1) {
+                mean(apply(Q, 2, function(AW) {
+                  H <- range[2]
+                  L <- range[1]
+                  M <- mean(AW)
+                  k <- length(AW)
+                  A.WG <- 1 - ((2 * var(AW))/(((H + L) * M - 
+                    (M^2) - (H * L)) * (k/(k - 1))))
+                  if (M < ((L * (k - 1) + H)/k)) 
+                    A.WG <- NA
+                  if (M > ((H * (k - 1) + L)/k)) 
+                    A.WG <- NA
+                  if (M == H | M == L) 
+                    A.WG = 1
+                  A.WG
+                }), na.rm = T)
+            }
+            else {
+                NA
+            }
+        })
+        ans2 <- lapply(DATSPLIT, nrow)
+        ans3 <- lapply(lapply(DATSPLIT, var),mean,na.rm=T)
+        ans1 <- unlist(ans1)
+        ans2 <- unlist(ans2)
+        ans3 <- unlist(ans3)
+        OUTPUT <- data.frame(grpid = names(DATSPLIT), a.wg = ans1, 
+            nitems = ncol(as.matrix(x)), nraters = ans2, avg.grp.var = ans3)
+        return(OUTPUT)
+        stop()
+    }
+    ans1 <- lapply(DATSPLIT, function(AW) {
+        H <- range[2]
+        L <- range[1]
+        M <- mean(AW)
+        k <- length(AW)
+        A.WG <- 1 - ((2 * var(AW))/(((H + L) * M - (M^2) - (H * 
+            L)) * (k/(k - 1))))
+        if (M < ((L * (k - 1) + H)/k)) 
+            A.WG <- NA
+        if (M > ((H * (k - 1) + L)/k)) 
+            A.WG <- NA
+        if (M == H | M == L) 
+            A.WG = 1
+        A.WG
+    })
+    ans2 <- lapply(DATSPLIT, length)
+    ans3 <- lapply(DATSPLIT, var)
+    ans1 <- unlist(ans1)
+    ans2 <- unlist(ans2)
+    ans3 <- unlist(ans3)
+    ans1[ans2 == 1] <- NA
+    OUTPUT <- data.frame(grpid = names(DATSPLIT), a.wg = ans1, 
+        nraters = ans2, grp.var = ans3)
+    return(OUTPUT)
+}
+
+##################################################################################
+
 cordif<-function(rvalue1,rvalue2,n1,n2){
 	zvalue1<-.5*((log(1+rvalue1))-(log(1-rvalue1)))
 	zvalue2<-.5*((log(1+rvalue2))-(log(1-rvalue2)))
@@ -319,6 +385,17 @@ sam.cor<-function(x,rho)
 	y <- (rho * (x - mean(x)))/sqrt(var(x)) + sqrt(1 - rho^2) * rnorm(length(x))
 	cat("Sample corr = ", cor(x, y), "\n")
 	return(y)
+}
+########################################################################################
+rmv.blanks<-function (object) 
+{
+    OUT <- lapply(object, function(xsub) {
+        ANY.BLNK <- grep(" +$", xsub)
+        if (length(ANY.BLNK) < length(xsub)) 
+            xsub <- xsub
+        else xsub <- sub(" +$", "", xsub)
+    })
+    return(data.frame(OUT))
 }
 ########################################################################################
 rgr.agree<-function (x, grpid, nrangrps) 
@@ -647,7 +724,7 @@ rwg.j.sim<-function(gsize, nitems, nresp, itemcors = NULL, nrep)
     TDAT <- matrix(c(as.numeric(names(cumpct)),cumpct,lag1,lag2),ncol=4)
     rwg.95 <- TDAT[TDAT[,2] > 0.95 & TDAT[,3] >= 0.95 & TDAT[,4] < 0.95, 1]
     estout <- list(rwg = OUT, gsize = gsize, nresp = nresp, 
-        nitems = 1, rwg.95 = rwg.95)
+        nitems = nitems, rwg.95 = rwg.95)
     class(estout) <- "agree.sim"
     return(estout)
 }
@@ -732,30 +809,9 @@ sobel<-function(pred,med,out){
 	effvar<-(mod3.out[2,1])^2*(mod2.out[3,2])^2+(mod2.out[3,1])^2*(mod3.out[2,2])^2
 	serr<-sqrt(effvar)
 	zvalue=indir/serr
-out<-list(Model.1=mod1.out,Model.2=mod2.out,Model.3=mod3.out,
+out<-list('Mod1: Y~X'=mod1.out,'Mod2: Y~X+M'=mod2.out,'Mod3: M~X'=mod3.out,
 	Indirect.Effect=indir,SE=serr,z.value=zvalue,N=nrow(NEWDAT))
 return(out)
-}
-####################################################################################
-sobel.lme<-function (pred, med, out, grpid) 
-{
-    NEWDAT <- data.frame(pred = pred, med = med, out = out, grpid=grpid)
-    NEWDAT <- na.exclude(NEWDAT)
-    model1 <- lme(out ~ pred, random=~1|grpid,data = NEWDAT)
-    model2 <- lme(out ~ pred + med, random=~1|grpid, data = NEWDAT)
-    model3 <- lme(med ~ pred, random=~1|grpid, data = NEWDAT)
-    mod1.out <- summary(model1)$tTable
-    mod2.out <- summary(model2)$tTable
-    mod3.out <- summary(model3)$tTable
-    indir <- mod3.out[2, 1] * mod2.out[3, 1]
-    effvar <- (mod3.out[2, 1])^2 * (mod2.out[3, 2])^2 + (mod2.out[3, 
-        1])^2 * (mod3.out[2, 2])^2
-    serr <- sqrt(effvar)
-    zvalue = indir/serr
-    out <- list(Model.1 = mod1.out, Model.2 = mod2.out, Model.3 = mod3.out, 
-        Indirect.Effect = indir, SE = serr, z.value = zvalue, 
-        N = nrow(NEWDAT),n.grps=length(unique(NEWDAT$grpid)))
-    return(out)
 }
 ####################################################################################
 waba<-function(x, y, grpid)

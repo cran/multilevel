@@ -9,18 +9,14 @@ the functions rwg.sim and rwg.j.sim.
 \method{summary}{agree.sim}(object,\dots)
 }
 \arguments{
-	\item{object}{An object of class 'agree.sim'.}
-	\item{\dots}{Optional additional arguments.  None used.}
+ \item{object}{An object of class 'agree.sim'.}
+ \item{\dots}{Optional additional arguments.  None used.}
 }
-\value{
-  A summary of all the output elements in the agree.sim class object.
-}
-
+\value{A summary of all the output elements in the agree.sim class object.}
 \author{
 Paul Bliese
 \email{paul.bliese@us.army.mil}
 }
-
 \seealso{
  \code{\link{rwg.sim}}
  \code{\link{rwg.j.sim}}
