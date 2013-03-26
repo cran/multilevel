@@ -2,25 +2,26 @@
 \alias{make.univ}
 \title{Convert data from multivariate to univariate form}
 \description{
-Longitudinal data is typically stored in multivariate or wide form.  In multivariate form, each row contains
-data from one subject even when the subject provides data at multiple time periods (eg. OUTCOME1,
-OUTCOME2, OUTCOME3).  In the case of repeated measures designs and growth modeling it
-is necessary to convert the data to univariate or stacked form where each row represents a single
-time indexed by a variable such as TIME and where each subject has multiple rows of data.
+Longitudinal data is often stored in multivariate or wide form.  In multivariate form, each row contains
+data from one subject, and repeated measures variables are indexed by different names (e.g., OUTCOME.T1,
+OUTCOME.T2, OUTCOME.T3).  In the case of repeated measures designs and growth modeling, it
+is necessary to convert the data to univariate or stacked form where each row represents one of the 
+repeated measures indexed by a TIME variable and nested within subject.  In univariate form, each subject
+has as many rows of data as there are time points.
 }
 \usage{
 make.univ(x,dvs,tname="TIME", outname="MULTDV")
 }
 \arguments{
  \item{x}{A dataframe in multivariate form.}
- \item{dvs}{A subset dataframe of x containing the repeated measures columns.  Note that dvs must be time-ordered
-from Time 1 to Time N for this function to work properly.}
+ \item{dvs}{A subset dataframe of x containing the repeated measures columns.  Note that the repeated measures
+            must be ordered from Time 1 to Time N for this function to work properly.}
  \item{tname}{An optional name for the new time variable.  Defaults to TIME.}
  \item{outname}{An optional name for the outcome variable name.  Defaults to MULTDV.}
 }
 \value{
-Returns a new dataframe in univariate (i.e., stacked) form with a new variable named TIME representing the time intervals
-and a new variable named MULTDV representing the stacked multilple dependent variables.  The TIME variable begins with 0.
+Returns a dataframe in univariate (i.e., stacked) form with a TIME variable representing the repeated observations,
+and a variable named MULTDV representing the time-indexed variable.  The TIME variable begins with 0.
 }     
 \author{
  Paul Bliese
@@ -30,7 +31,9 @@ and a new variable named MULTDV representing the stacked multilple dependent var
 Bliese, P. D., & Ployhart, R. E. (2002). Growth modeling using random coefficient models:  Model building, testing
 and illustrations.  Organizational Research Methods, 5, 362-387.
 }
-
+\seealso{
+ \code{\link{mult.make.univ}}
+}
 \examples{
 data(univbct)  #a dataframe in univariate form for job satisfaction
 TEMP<-univbct[3*1:495,c(22,1:17)]  #convert back to multivariate form

@@ -378,7 +378,21 @@ mult.icc<-function (x, grpid)
     }
     return(ans)
 }
-
+########################################################################################
+mult.make.univ <- function(x,dvlist,tname="TIME",outname="MULTDV")
+{
+  NREPOBS <- length(dvlist[[1]])
+  UNIV.DAT <- x[rep(1:nrow(x), rep(NREPOBS, nrow(x))), 1:ncol(x)]
+  FINAL.UNIV <- data.frame(timedat = rep(0:(NREPOBS - 1), nrow(x)), as.data.frame(lapply(dvlist,function(cols) {as.vector(t(x[,cols]))})))
+  if (is.null(names(dvlist)))
+  {
+    names(FINAL.UNIV) <- c(tname,paste(outname,1:(ncol(FINAL.UNIV)-1),sep=''))
+  }else{
+    names(FINAL.UNIV) <- c(tname,names(dvlist))
+  }
+  FINAL.DAT <- data.frame(UNIV.DAT,FINAL.UNIV)
+  return(FINAL.DAT)
+}
 ########################################################################################
 sam.cor<-function(x,rho)
 {
@@ -458,6 +472,13 @@ ran.group<-function(x, grpid, fun, ...)
         ans
 }
 
+simple.predict<-function(orig.mod,formula,newdata,dichot=FALSE){
+     X<-model.matrix(formula,newdata)
+     ifelse(isS4(orig.mod),beta<-orig.mod@fixef,beta<-orig.mod$coefficients)
+     if(dichot){
+          return(exp(drop(X%*%beta))/(1+exp(drop(X%*%beta))))}
+     return(drop(X%*%beta))
+}
 
 summary.rgr.agree<-function(object, ...)
 {
