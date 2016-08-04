@@ -33,7 +33,7 @@ greater than or equal to rwg.95 are considered significant, p<.05.}
 
 \author{
 Paul Bliese
-\email{paul.bliese@us.army.mil}
+\email{paul.bliese@moore.sc.edu}
 }
 \references{
 Cohen, A., Doveh, E., & Eick, U. (2001).  Statistical properties of the rwg(j)

@@ -25,7 +25,7 @@ and the second contains the estimate based on the object.
 
 \author{
 Paul Bliese
-\email{paul.bliese@us.army.mil}
+\email{paul.bliese@moore.sc.edu}
 }
 
 \seealso{

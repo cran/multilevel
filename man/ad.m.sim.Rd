@@ -45,7 +45,7 @@ than this value are considered significant.}
 
 \author{
 Paul Bliese
-\email{paul.bliese@us.army.mil}
+\email{paul.bliese@moore.sc.edu}
 }
 \references{
 Cohen, A., Doveh, E., & Nahum-Shani, I. (2009).  Testing agreement for multi-item scales

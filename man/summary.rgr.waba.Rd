@@ -18,7 +18,7 @@ Mean and Standard Deviations (SD) for each parameter in the rgr.waba model.
 
 \author{
 Paul Bliese
-\email{paul.bliese@us.army.mil}
+\email{paul.bliese@moore.sc.edu}
 }
 
 \seealso{

@@ -35,7 +35,7 @@ widely used, other random values may be more appropriate.}
 
 \author{
 Paul Bliese
-\email{paul.bliese@us.army.mil}
+\email{paul.bliese@moore.sc.edu}
 }
 \references{
 Bliese, P. D. (2000).  Within-group agreement, non-independence, and reliability:

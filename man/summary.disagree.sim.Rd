@@ -15,7 +15,7 @@ the function ad.m.sim.
 \value{A summary of all the output elements in the disagree.sim class object.}
 \author{
 Paul Bliese
-\email{paul.bliese@us.army.mil}
+\email{paul.bliese@moore.sc.edu}
 }
 \seealso{
  \code{\link{ad.m.sim}}

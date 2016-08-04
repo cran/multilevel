@@ -36,7 +36,7 @@ group size characteristics of the data.}
 
 \author{
 Paul Bliese
-\email{paul.bliese@us.army.mil}
+\email{paul.bliese@moore.sc.edu}
 }
 \references{
 Bliese, P. D., & Halverson, R. R. (2002).  Using random group resampling in multilevel

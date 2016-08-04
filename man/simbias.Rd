@@ -39,7 +39,7 @@ simbias(corr,gsize,ngrp,icc1x,icc1y,nrep)
 
 \author{
 Paul Bliese
-\email{paul.bliese@us.army.mil}
+\email{paul.bliese@moore.sc.edu}
 }
 
 \references{

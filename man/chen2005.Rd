@@ -28,7 +28,7 @@ lme(MULTDV~NCEMP*TIME+TMEXP*TIME+TMPRF*TIME,random=~TIME|ID,chen2005.univ)
 }
 }
 \references{
-Chen, G.(2000). Newcomer adaptation in team:  Multilevel antecedents and outcomes.
+Chen, G.(2005). Newcomer adaptation in team:  Multilevel antecedents and outcomes.
 Academy of Management Journal, 48, 101-116.
 }
 \keyword{datasets}

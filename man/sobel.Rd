@@ -32,7 +32,7 @@ models.  In S. Leinhardt (Ed.), Sociological Methodology 1982 (pp. 290-312). Was
 Sociological Association.}
 
 \author{ Paul Bliese
- \email{paul.bliese@us.army.mil}}
+ \email{paul.bliese@moore.sc.edu}}
 
 \examples{
 data(bh1996)

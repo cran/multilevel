@@ -22,7 +22,7 @@ Bartko, J.J. (1976).  On various intraclass correlation reliability
 coefficients.  Psychological Bulletin, 83, 762-765.}
 
 \author{ Paul Bliese
- \email{paul.bliese@us.army.mil}
+ \email{paul.bliese@moore.sc.edu}
 }
 
 \seealso{  \code{\link{ICC2}}

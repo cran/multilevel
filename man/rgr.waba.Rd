@@ -28,7 +28,7 @@ each random run for each component of the covariance theorem.
 }
 \author{
 Paul Bliese
-\email{paul.bliese@us.army.mil}
+\email{paul.bliese@moore.sc.edu}
 }
 \references{
 Bliese, P. D. & Halverson, R. R. (1996).  Individual and nomothetic

@@ -22,7 +22,7 @@ Standard Deviation of random group variance, Actual group variance, z-value}
 
 \author{
 Paul Bliese
-\email{paul.bliese@us.army.mil}
+\email{paul.bliese@moore.sc.edu}
 }
 
 \seealso{

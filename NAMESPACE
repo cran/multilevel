@@ -1,4 +1,7 @@
 import("stats")
+import("MASS")
+import("nlme")
+importFrom("graphics","lines","plot")
 exportPattern("^[^\\.]")
 S3method(summary, rgr.agree)
 S3method(summary, rgr.waba)

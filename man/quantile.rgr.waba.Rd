@@ -21,7 +21,7 @@ the function rgr.waba.
 
 \author{
 Paul Bliese
-\email{paul.bliese@us.army.mil}
+\email{paul.bliese@moore.sc.edu}
 }
 
 \seealso{

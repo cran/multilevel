@@ -30,7 +30,7 @@ and new variables representing the time-indexed variables (MULTDV1, MULTDV2, etc
 Patrick Downes
  \email{pat-downes@uiowa.edu} 
 Paul Bliese
- \email{paul.bliese@us.army.mil}
+ \email{paul.bliese@moore.sc.edu}
 }
 \references{
 Bliese, P. D., & Ployhart, R. E. (2002). Growth modeling using random coefficient models:  Model building, testing
@@ -46,7 +46,7 @@ names(TEMP) #use the column names to find the column numbers
 
 #Create a list of DV's - each DV should have the same number of obs
 dvlist <- list(c(10,13,16),c(11,14,17))
-names(dvlist) <- c("JOBSAT","COMMIT") #naming the list gives the univariate output these column names
+names(dvlist) <- c("JOBSAT","COMMIT") #names for univariate output
 
 #Transform the data into univariate form with multiple level-1 variables
 mldata <- mult.make.univ(x=TEMP,dvlist=dvlist)  

@@ -171,7 +171,52 @@ awg<-function (x, grpid, range = c(1, 5))
 }
 
 ##################################################################################
-
+boot.icc<-function(x, grpid, nboot, aov.est=FALSE){
+   if(aov.est){
+   data<-data.frame(grpid,x)  #fixes data because code below uses the first column to select level 2
+   B.OUT<-rep(NA,nboot)
+   ngrp<-length(unique(grpid))
+   for(i in 1:nboot) {
+       #The code below creates an empty list, selects a sample of level 2
+       #units and then goes in and samples level-1 units for each level 2 unit
+       ROUT<-list(NA)
+       rgrps<-sample(grpid,ngrp,replace=T)
+          for (k in 1:ngrp){
+             ROUT[[k]]<-data.frame(newgrp=k,data[is.element(data[,1],rgrps[k]),])
+             dindex<-sample(nrow(ROUT[[k]]),nrow(ROUT[[k]]),replace=T)
+          ROUT[[k]]<-ROUT[[k]][dindex,]
+          }
+       ROUT<-(do.call(rbind,ROUT))
+       tmod<-aov(x~as.factor(newgrp),data=ROUT)  
+       B.OUT[i]<-ICC1(tmod)
+       }
+    return(B.OUT)
+   }
+   if(!aov.est){
+   data<-data.frame(grpid,x)  #fixes data because code below uses the first column to select level 2
+   B.OUT<-rep(NA,nboot)
+   ngrp<-length(unique(grpid))
+   for(i in 1:nboot) {
+       #The code below creates an empty list, selects a sample of level 2
+       #units and then goes in and samples level-1 units for each level 2 unit
+       ROUT<-list(NA)
+       rgrps<-sample(grpid,ngrp,replace=T)
+          for (k in 1:ngrp){
+             ROUT[[k]]<-data.frame(newgrp=k,data[is.element(data[,1],rgrps[k]),])
+             dindex<-sample(nrow(ROUT[[k]]),nrow(ROUT[[k]]),replace=T)
+          ROUT[[k]]<-ROUT[[k]][dindex,]
+          }
+       ROUT<-(do.call(rbind,ROUT))
+       tmod<-lme(x~1, random=~1|newgrp,data=ROUT,control=list(opt="optim"))  
+       temp<-VarCorr(tmod)
+         Tau<-as.numeric(temp[[1]])
+       Sigma.Sq<-(tmod$sigma)^2
+       B.OUT[i]<-Tau/(Tau+Sigma.Sq)
+       }
+   return(B.OUT)
+   }
+}
+##################################################################################
 cordif<-function(rvalue1,rvalue2,n1,n2){
 	zvalue1<-.5*((log(1+rvalue1))-(log(1-rvalue1)))
 	zvalue2<-.5*((log(1+rvalue2))-(log(1-rvalue2)))
@@ -368,7 +413,8 @@ mult.icc<-function (x, grpid)
     GSIZE <- mean(aggregate(grpid, list(grpid), length)[,2])
     for (i in 1:ncol(x)) {
         DV <- x[, i]
-        tmod <- lme(DV ~ 1, random = ~1 | grpid, na.action = na.omit)
+        tmod <- lme(DV ~ 1, random = ~1 | grpid, na.action = na.omit,
+              control=list(opt="optim"))
         TAU <- as.numeric(VarCorr(tmod)[, 1][1])
         SIGMASQ <- tmod$sigma^2
         ICC1 <- TAU/(TAU + SIGMASQ)
@@ -470,14 +516,6 @@ ran.group<-function(x, grpid, fun, ...)
                 x <- x[ - SAM]
         }
         ans
-}
-
-simple.predict<-function(orig.mod,formula,newdata,dichot=FALSE){
-     X<-model.matrix(formula,newdata)
-     ifelse(isS4(orig.mod),beta<-orig.mod@fixef,beta<-orig.mod$coefficients)
-     if(dichot){
-          return(exp(drop(X%*%beta))/(1+exp(drop(X%*%beta))))}
-     return(drop(X%*%beta))
 }
 
 summary.rgr.agree<-function(object, ...)
@@ -815,6 +853,51 @@ ANS <- data.frame(ANS)
 names(ANS) <- c("icc1.x", "icc1.y", "lme.coef", "lme.se", "lme.tvalue", 
 "lm.coef", "lm.se", "lm.tvalue")
 return(ANS)
+}
+###################################################################################
+sim.icc<-function (gsize, ngrp, icc1,nitems=1,item.cor=FALSE) 
+{
+    if(!item.cor){
+    ANS <- matrix(NA, ngrp*gsize, nitems+1)
+    GID <- sort(rep(1:ngrp, gsize))
+    ANS[,1]<-GID
+    NOBS<-gsize*ngrp
+    for (i in 1:nitems) {
+        X <- rnorm(NOBS)
+        GSTD <- sqrt((1/(1 - icc1)) - 1)
+        #GSTD <- GSTD/(gsize/(gsize-1))# potential n-1 fix: ngrp or gsize
+        TG.X <- rnorm(ngrp, 0, GSTD)
+        TDATX <- sort(rep(TG.X, gsize))
+        X.2 <- X + TDATX
+        ANS[, i+1] <- X.2
+    }
+    ANS <- data.frame(ANS)
+    names(ANS)<-c("GRP",paste0("VAR",c(1:nitems)))
+    return(ANS)
+    }
+    if(item.cor){
+    if(nitems==1){
+       print("You must generate more than one item")
+       stop()
+       }
+    ANS <- matrix(NA, ngrp*gsize, nitems+1)
+    GID <- sort(rep(1:ngrp, gsize))
+    ANS[,1]<-GID
+    NOBS<-gsize*ngrp
+    X <- rnorm(NOBS)
+    for (i in 1:nitems) {
+        X2<-sqrt(item.cor)*X+sqrt(1-item.cor)*rnorm(NOBS)
+        GSTD <- sqrt((1/(1 - icc1)) - 1)
+        #GSTD <- GSTD/(gsize/(gsize-1)) #potential n-1 fix: ngrp or gsize
+        TG.X <- rnorm(ngrp, 0, GSTD)
+        TDATX <- sort(rep(TG.X, gsize))
+        VALUE <- X2 + TDATX
+        ANS[, i+1] <- VALUE
+    }
+    ANS <- data.frame(ANS)
+    names(ANS)<-c("GRP",paste0("VAR",c(1:nitems)))
+    return(ANS)
+    }
 }
 ###################################################################################
 sobel<-function(pred,med,out){

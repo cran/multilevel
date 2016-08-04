@@ -18,7 +18,7 @@ item.total(items)
 the internal structure of tests. Psychometrika, 16,297-334}
 
 \author{ Paul Bliese
- \email{paul.bliese@us.army.mil}}
+ \email{paul.bliese@moore.sc.edu}}
 
 \seealso{\code{\link{cronbach}}}
 

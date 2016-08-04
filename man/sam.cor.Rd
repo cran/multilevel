@@ -18,7 +18,7 @@ sam.cor(x,rho)
 }
 
 \author{ Paul Bliese
- \email{paul.bliese@us.army.mil}}
+ \email{paul.bliese@moore.sc.edu}}
 
 \seealso{\code{\link{simbias}}}
 

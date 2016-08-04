@@ -14,7 +14,7 @@ rmv.blanks(object)
 }
 \value{Returns a new dataframe without preceeding }
 \author{ Paul Bliese
- \email{paul.bliese@us.army.mil}
+ \email{paul.bliese@moore.sc.edu}
 }
 
 \seealso{  \code{\link[foreign]{read.spss}}

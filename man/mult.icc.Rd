@@ -21,7 +21,7 @@ mult.icc(x, grpid)
 }
 \author{
  Paul Bliese
- \email{paul.bliese@us.army.mil}
+ \email{paul.bliese@moore.sc.edu}
 }
 \references{
 Bliese, P. D. (2000).  Within-group agreement, non-independence, and

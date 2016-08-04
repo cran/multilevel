@@ -38,7 +38,7 @@ are calculated and plotted.  If bootci is TRUE, the nreps option should be 1000 
 multilevel research.  Leadership Quarterly, 13, 53-68.}
 
 \author{ Paul Bliese
- \email{paul.bliese@us.army.mil}}
+ \email{paul.bliese@moore.sc.edu}}
 
 
 \seealso{

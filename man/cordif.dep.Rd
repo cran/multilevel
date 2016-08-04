@@ -20,7 +20,7 @@ Returns three values.  A t-value, DF and p-value.
 }     
 \author{
  Paul Bliese
- \email{paul.bliese@us.army.mil}
+ \email{paul.bliese@moore.sc.edu}
 }
 \references{
 Cohen, J. & Cohen, P. (1983).  Applied multiple regression/correlation analysis

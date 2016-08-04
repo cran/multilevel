@@ -15,7 +15,7 @@ the functions rwg.sim and rwg.j.sim.
 \value{A summary of all the output elements in the agree.sim class object.}
 \author{
 Paul Bliese
-\email{paul.bliese@us.army.mil}
+\email{paul.bliese@moore.sc.edu}
 }
 \seealso{
  \code{\link{rwg.sim}}
