@@ -2,10 +2,13 @@
 \alias{rwg}
 \title{James et al., (1984) agreement index for single item measures}
 \description{
-This function calculates the within group agreement measure rwg for single
-item measures as described in James, Demaree and Wolf (1984).  The rwg is calculated
-as rwg = 1-(Observed Group Variance/Expected Random Variance).  James et al. (1984)
-recommend truncating the Observed Group Variance to the Expected Random Variance in
+Calculates the within group agreement measure rwg for single
+item measures as described in James, Demaree and Wolf (1984). The rwg is calculated
+as:
+
+rwg = 1-(Observed Group Variance/Expected Random Variance)
+
+James et al. (1984) recommend truncating the Observed Group Variance to the Expected Random Variance in
 cases where the Observed Group Variance was larger than the Expected Random Variance.
 This truncation results in an rwg value of 0 (no agreement) for groups with large
 variances.
@@ -23,7 +26,7 @@ Strongly Disagree, Disagree, Neither, Agree, Strongly Agree).
 In cases where there are not 5 response options, the rectangular
 distribution is estimated using the formula
 \eqn{\mathtt{ranvar}=(A^{2}-1)/12}{ranvar=(A^2-1)/12} where
-A is the number of response options.  While the rectangular distribution is
+A is the number of response options. While the rectangular distribution is
 widely used, other random values may be more appropriate.}
 }
 \value{
@@ -33,7 +36,7 @@ widely used, other random values may be more appropriate.}
 }     
 
 \author{Paul Bliese
-\email{paul.bliese@moore.sc.edu}
+\email{pdbliese@gmail.com}
 }
 
 \references{
@@ -47,6 +50,7 @@ Psychology, 69, 85-98.
 }
 \seealso{
  \code{\link{ad.m}}
+ \code{\link{awg}}
  \code{\link{rwg.j}}
  \code{\link{rwg.sim}}
  \code{\link{rgr.agree}}

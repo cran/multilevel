@@ -1,10 +1,9 @@
 \name{awg}
 \alias{awg}
 \title{Brown and Hauenstein (2005) awg agreement index}
-\description{
-This function calculates the awg index proposed by Brown and Hauenstein (2005).  The awg
+\description{Calculates the awg index proposed by Brown and Hauenstein (2005). The awg
 agreement index can be applied to either a single item vector or a multiple item matrix
-representing a scale.  The awg is an analogue to Cohen's kappa. Brown
+representing a scale. The awg is an analogue to Cohen's kappa. Brown
 and Hauenstein (pages 177-178) recommend interpreting the awg similarly to how the rwg
 (James et al., 1984) is commonly interpreted with values of .70 indicating acceptable
 agreement; values between .60 and .69 as reasonable agreement, and values less than .60
@@ -26,19 +25,19 @@ an individual respondent.}
 	\item{grpid}{The group identifier.}
 	\item{a.wg}{The awg estimate for each group.}
 	\item{nitems}{The number of scale items when x is a matrix or dataframe representing
-                      a multi-item scale.  This value is not returned when x is a vector.}
-	\item{nraters}{The number of raters.  Given that the awg estimate is based on the
+                      a multi-item scale. This value is not returned when x is a vector.}
+	\item{nraters}{The number of raters. Given that the awg estimate is based on the
                        sample estimate of variance with N-1 in the denominator,
                        Brown and Hauenstein (2005) contend that awg can be estimated on as
                        few as A-1 raters where A represents the number of response options
-                       specified by the range option (5 as the default).  Note that
+                       specified by the range option (5 as the default). Note that
                        in many situations nraters will correspond to group size.}
 
 }
 
 \author{
 Paul Bliese
-\email{paul.bliese@moore.sc.edu}
+\email{pdbliese@gmail.com}
 }
 
 \references{

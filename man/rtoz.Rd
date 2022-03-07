@@ -2,7 +2,7 @@
 \alias{rtoz}
 \title{Conducts an r to z transformation}
 \description{
-This function transforms a correlation (r) to a z variate using the formula
+Transforms a correlation (r) to a z variate using the formula
 provided on page 53 of Cohen & Cohen (1983).  The formula is z=.5*((log(1+r))-(log(1-r)))
 where r is the correlation.
 }
@@ -10,14 +10,13 @@ where r is the correlation.
 rtoz(rvalue)
 }
 \arguments{
- \item{rvalue}{The correlation for which one wants the z transformation.}
+ \item{rvalue}{The correlation to be z transformed.}
 }
-\value{
-Produces a single value, the z transformation.
+\value{The z transformation.
 }     
 \author{
  Paul Bliese
- \email{paul.bliese@moore.sc.edu}
+ \email{pdbliese@gmail.com}
 }
 \references{
 Cohen, J. & Cohen, P. (1983).  Applied multiple regression/correlation analysis

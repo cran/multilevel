@@ -3,11 +3,11 @@
 \alias{lq2002}
 \title{Data used in special issue of Leadership Quarterly, Vol. 13, 2002}
 \description{
-This dataset contains the complete data used in a special issue of Leadership Quarterly edited
-by Paul Bliese, Ronald Halverson and Chet Schriesheim in 2002 (Vol 13).  Researchers from several
-universities analyzed this common dataset using various multilevel techniques.  The three
+Contains the complete data used in a special issue of Leadership Quarterly edited
+by Paul Bliese, Ronald Halverson and Chet Schriesheim in 2002 (Vol 13). Researchers from several
+universities analyzed this common dataset using various multilevel techniques. The three
 scales used in the analyses are Leadership Climate (LEAD), Task Significance (TSIG) and Hostility
-(HOSTILE).  The data set contains each item making up these scales.  These items were used by
+(HOSTILE). The data set contains each item making up these scales. These items were additionally used by
 Cohen, Doveh and Nahum-Shani (2009).
 }
 \usage{data(lq2002)}

@@ -2,17 +2,16 @@
 \docType{data}
 \alias{univbct}
 \title{Data from Bliese and Ployhart (2002)}
-\description{
-This data set contains the complete data set used in Bliese and Ployhart (2002).  The data is longitudinal data
-converted to univariate (i.e., stacked) form.  Data were collected at three time points.
+\description{Contains the complete data set used in Bliese and Ployhart (2002) focused on Job
+Satisfation. The data is in univariate (i.e., stacked) form. Data were collected at three time points.
 }
 \usage{data(univbct)}
 \format{A data frame with 22 columns and 1485 observations from 495 individuals
 \tabular{llll}{
 [,1] \tab BTN     \tab numeric  \tab BN Id\cr
 [,2] \tab COMPANY   \tab numeric  \tab Co Id\cr
-[,3] \tab MARITAL \tab numeric  \tab Marital Status\cr
-[,4] \tab GENDER \tab numeric  \tab Gender\cr
+[,3] \tab MARITAL \tab numeric  \tab Marital Status (1 single; 2 married; 3 separated; 4 divorced; 5 other)\cr
+[,4] \tab GENDER \tab numeric  \tab Gender (1 male; 2 female)\cr
 [,5] \tab HOWLONG    \tab numeric  \tab Time in Unit \cr
 [,6] \tab RANK  \tab numeric  \tab Rank\cr
 [,7] \tab EDUCATE  \tab numeric  \tab Education\cr

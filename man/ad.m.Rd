@@ -2,13 +2,13 @@
 \alias{ad.m}
 \title{Average deviation around mean or median}
 \description{
-This function calculates the average deviation of the mean or median as a measure
-of within-group agreement as proposed by Burke, Finkelstein and Dusig (1999).  A basic
+Calculates the average deviation of the mean or median as a measure
+of within-group agreement as proposed by Burke, Finkelstein and Dusig (1999). A basic
 rule for interpreting whether or not the results display practically significant levels
 of agreement is whether the AD value is smaller than A/6 where A represents the number of
-response options.  For instance, A would be 5 on a five-point response option format of
+response options. For instance, A would be 5 on a five-point response option format of
 strongly disagree, disagree, neither, agree, strongly agree (see Dunlap, Burke & Smith-Crowe,
-2003).  To estimate statistical significance see the ad.m.sim function and help files.
+2003). To estimate statistical significance see the ad.m.sim function and help files.
 }
 \usage{
 ad.m(x, grpid, type="mean")
@@ -29,7 +29,7 @@ an individual respondent.}
 
 \author{
 Paul Bliese
-\email{paul.bliese@moore.sc.edu}
+\email{pdbliese@gmail.com}
 }
 
 \references{
@@ -43,6 +43,7 @@ Applied Psychology, 88, 356-362.
 
 \seealso{
  \code{\link{ad.m.sim}}
+ \code{\link{awg}}
  \code{\link{rwg}}
  \code{\link{rwg.j}}
  \code{\link{rgr.agree}}

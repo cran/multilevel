@@ -2,9 +2,9 @@
 \alias{cordif.dep}
 \title{Estimate whether two dependent correlations differ}
 \description{
-This function tests for statistical differences between two dependent
+Tests for statistical differences between two dependent
 correlations using the formula provided on page 56 of Cohen & Cohen (1983).
-The function returns a t-value, the DF and the p-value.
+The function returns a t-value, the DF, and the p-value.
 }
 \usage{
 cordif.dep(r.x1y,r.x2y,r.x1x2,n)
@@ -16,11 +16,11 @@ cordif.dep(r.x1y,r.x2y,r.x1x2,n)
  \item{n}{The sample size.}
 }
 \value{
-Returns three values.  A t-value, DF and p-value.
+Returns three values. A t-value, DF and p-value.
 }     
 \author{
  Paul Bliese
- \email{paul.bliese@moore.sc.edu}
+ \email{pdbliese@gmail.com}
 }
 \references{
 Cohen, J. & Cohen, P. (1983).  Applied multiple regression/correlation analysis

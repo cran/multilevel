@@ -1,14 +1,14 @@
-\name{GmeanRel}
-\alias{GmeanRel}
+\name{gmeanrel}
+\alias{gmeanrel}
 \title{Group Mean Reliability from an lme model (nlme package)}
-\description{This function calculates the group-mean reliability from a linear mixed effects (lme) model.
+\description{Calculates the group-mean reliability from a linear mixed effects (lme) model.
 If group sizes are identical, the group-mean reliabilty estimate equals the ICC(2) estimate from an
-ANOVA model.  When group sizes differ, however, a group-mean reliability estimate
-is calculated for each group based on the group size.  The group-mean reliability estimate for each group
-is based upon the Spearman-Brown formula, the overall ICC, and group size for each group.
+ANOVA model. When group sizes differ, however, a group-mean reliability estimate
+is calculated for each group based on the Spearman-Brown formula, the overall ICC, and
+group size for each group.
 }
 \usage{
-GmeanRel(object)
+gmeanrel(object)
 }
 \arguments{
  \item{object}{A Linear Mixed Effect (lme) object.}
@@ -22,7 +22,7 @@ GmeanRel(object)
      
 \author{
  Paul Bliese
- \email{paul.bliese@moore.sc.edu}
+ \email{pdbliese@gmail.com}
 }
 \references{
 Bliese, P. D. (2000).  Within-group agreement, non-independence, and
@@ -42,6 +42,6 @@ coefficients.  Psychological Bulletin, 83, 762-765.
 data(bh1996)
 library(nlme)
 tmod<-lme(WBEING~1,random=~1|GRP,data=bh1996)
-GmeanRel(tmod)
+gmeanrel(tmod)
 }
 \keyword{attribute}

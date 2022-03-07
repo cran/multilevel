@@ -2,17 +2,17 @@
 \alias{simbias}
 \title{Simulate Standard Error Bias in Non-Independent Data}
 \description{Non-independence due to groups is a common characteristic
-of applied data.  In non-independent data, responses from members of the
+of applied data. In non-independent data, responses from members of the
 same group are more similar to each other than would be expected by chance.  
 Non-independence is typically measured using the Intraclass Correlation
-Coefficient 1 or ICC(1).  When non-independent data is treated as though it is
-independent, standard errors will be biased and power can decrease.  This simulation
+Coefficient 1 or ICC(1). When non-independent data is treated as though it is
+independent, standard errors will be biased and power can decrease. The simbias simulation
 allows one to estimate the bias and loss of statistical power that occurs when
-non-independent data is treated as though it is independent.  The simulation contrasts
+non-independent data is treated as though it is independent. The simulation contrasts
 a simple Ordinary Least Squares (OLS) model that fails to account for non-independence
-with a random coefficient model that accounts for non-independence.  The simulation
+with a random coefficient model that accounts for non-independence. The simulation
 assumes that both the outcome (y) and the predictor (x) vary among individuals
-in the same group.
+in the same group (i.e., are within variables).
 
 }
 \usage{
@@ -39,7 +39,7 @@ simbias(corr,gsize,ngrp,icc1x,icc1y,nrep)
 
 \author{
 Paul Bliese
-\email{paul.bliese@moore.sc.edu}
+\email{pdbliese@gmail.com}
 }
 
 \references{

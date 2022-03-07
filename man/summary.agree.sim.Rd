@@ -1,8 +1,7 @@
 \name{summary.agree.sim}
 \alias{summary.agree.sim}
 \title{S3 method for class 'agree.sim'}
-\description{
-This function provides a concise summary of objects created using
+\description{Provides a concise summary of objects created using
 the functions rwg.sim and rwg.j.sim. 
 }
 \usage{
@@ -15,7 +14,7 @@ the functions rwg.sim and rwg.j.sim.
 \value{A summary of all the output elements in the agree.sim class object.}
 \author{
 Paul Bliese
-\email{paul.bliese@moore.sc.edu}
+\email{pdbliese@gmail.com}
 }
 \seealso{
  \code{\link{rwg.sim}}
@@ -23,8 +22,8 @@ Paul Bliese
 }
 \examples{
 #An example from Dunlap et al. (2003).  The estimate from Dunlap et al.
-#Table 2 is 0.53
-RWG.OUT<-rwg.sim(gsize=10,nresp=5,nrep=1000)
+#Table 2 is 0.53. Increase replications in actual use.
+RWG.OUT<-rwg.sim(gsize=10,nresp=5,nrep=500)
 summary(RWG.OUT)
 }
 \keyword{programming}

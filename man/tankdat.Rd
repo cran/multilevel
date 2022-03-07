@@ -1,11 +1,11 @@
 \name{tankdat}
 \docType{data}
 \alias{tankdat}
-\title{Tank data from Bliese and Lang (in press)}
+\title{Tank data from Bliese and Lang (2016)}
 \description{
-This data set is a partial sample of data collected by Lang and reported in Lang and
+A partial sample of data collected by Lang and reported in Lang and
 Bliese (2009). The tankdat sub-sample was used as an example of discontinuous
-growth modeling in Bliese and Lang (in press). The data set is in long (univariate)
+growth modeling in Bliese and Lang (2016). The data set is in long (univariate)
 format, and contains performance data from 184 participants over 12 repeated
 measures on a complex tank simulation task. In the research paradigm, the task
 was unexpectedly changed after the first six performance episodes. Discontinuous
@@ -23,9 +23,9 @@ conscientiousness.
 }
 }
 \references{
-Bliese, P. D., & Lang, J. W. B. (in press).  Understanding relative and absolute change in
+Bliese, P. D., & Lang, J. W. B. (2016).  Understanding relative and absolute change in
 discontinuous growth models: Coding alternatives and implications for hypothesis testing.
-Organizational Research Methods.
+Organizational Research Methods, 19, 562-592.
 
 Lang, J. W. B., & Bliese, P. D. (2009).  General mental ability and two types of adaptation
 to unforeseen change:  Applying discontinuous growth models to the task-change paradigm.

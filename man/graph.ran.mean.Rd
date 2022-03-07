@@ -1,11 +1,11 @@
 \name{graph.ran.mean}
 \alias{graph.ran.mean}
 \title{Graph Random Group versus Actual Group distributions}
-\description{This function uses random group resampling (RGR) to create a distribution
-of pseudo group means.  The pseudo group means are then contrasted with
+\description{Uses random group resampling (RGR) to create a distribution
+of pseudo group means. Pseudo group means are then contrasted with
 actual group means to provide a visualization of the group-level properties
-of the data. It is, in essense, a way of visualizing an Intraclass Correlation
-Coefficient -- ICC(1).}
+of the data. It is, in essense, a way of visualizing the ICC1 or an F-Value
+from an ANOVA model.}
 \usage{
 graph.ran.mean(x, grpid, nreps, limits, graph=TRUE, bootci=FALSE)
 }
@@ -18,7 +18,7 @@ Because groups are created with the exact size
 characteristics of the actual groups, the total number of pseudo groups created
 may be calculated as nreps * Number Actual Groups. The value chosen for nreps only
 affects the smoothness of the pseudo group line -- values greater than 25 should
-provide sufficiently smooth lines.  Values of 1000 should be used if the bootci
+provide sufficiently smooth lines. Values of 1000 should be used if the bootci
 option is TRUE although only 25 are used in the example to reduce computation time.}
  \item{limits}{Controls the upper and lower limits of the y-axis on the plot.
 The default is to set the limits at the 10th and 90th percentiles of the raw data.
@@ -26,19 +26,19 @@ This option only affects how the data is plotted.}
  \item{graph}{Controls whether or not a plot is returned.  If graph=FALSE,
 the program returns a data frame with two columns.  The first column
 contains the sorted means from the actual groups, and the second column contains
-the sorted means from the pseudo groups.  This can be useful for plotting results
+the sorted means from the pseudo groups. This can be useful for plotting results
 in other programs.}
  \item{bootci}{Determines whether approximate 95 percent confidence interval estimates
-are calculated and plotted.  If bootci is TRUE, the nreps option should be 1000 or more.}
+are calculated and plotted. If bootci is TRUE, the nreps option should be 1000 or more.}
 }
 
 \value{Produces either a plot (graph=TRUE) or a data.frame (graph=FALSE)}
 
-\references{Bliese, P. D., & Halverson, R. R. (2002).  Using random group resampling in
+\references{Bliese, P. D., & Halverson, R. R. (2002). Using random group resampling in
 multilevel research.  Leadership Quarterly, 13, 53-68.}
 
 \author{ Paul Bliese
- \email{paul.bliese@moore.sc.edu}}
+ \email{pdbliese@gmail.com}}
 
 
 \seealso{

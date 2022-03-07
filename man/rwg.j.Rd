@@ -2,8 +2,8 @@
 \alias{rwg.j}
 \title{James et al., (1984) agreement index for multi-item scales}
 \description{
-This function calculates the within group agreement measure rwg(j) for multiple
-item measures as described in James, Demaree & Wolf (1984).  James et al. (1984)
+Calculates the within group agreement measure rwg(j) for multiple
+item measures as described in James, Demaree and Wolf (1984). James et al. (1984)
 recommend truncating the Observed Group Variance to the Expected Random Variance in
 cases where the Observed Group Variance was larger than the Expected Random Variance.
 This truncation results in an rwg.j value of 0 (no agreement) for groups with large
@@ -13,7 +13,7 @@ variances.
 rwg.j(x, grpid, ranvar=2)
 }
 \arguments{
- \item{x}{A matrix representing the scale items.  Each column of the matrix
+ \item{x}{A matrix representing the scale items. Each column of the matrix
 represents a separate item, and each row represents an individual respondent.}
  \item{grpid}{A vector identifying the group from which x originated.}
  \item{ranvar}{The random variance to which actual group variances are compared.
@@ -23,7 +23,7 @@ Strongly Disagree, Disagree, Neither, Agree, Strongly Agree).
 In cases where there are not 5 response options, the rectangular
 distribution is estimated using the formula
 \eqn{\mathtt{ranvar}=(A^2-1)/12}{ranvar=(A^2-1)/12} where
-A is the number of response options.  While the rectangular distribution is
+A is the number of response options. While the rectangular distribution is
 widely used, other random values may be more appropriate.}
 }
 
@@ -35,7 +35,7 @@ widely used, other random values may be more appropriate.}
 
 \author{
 Paul Bliese
-\email{paul.bliese@moore.sc.edu}
+\email{pdbliese@gmail.com}
 }
 \references{
 Bliese, P. D. (2000).  Within-group agreement, non-independence, and reliability:
@@ -50,6 +50,7 @@ Psychology, 69, 85-98.
 
 \seealso{
  \code{\link{ad.m}}
+ \code{\link{awg}}
  \code{\link{rwg}}
  \code{\link{rgr.agree}}
  \code{\link{rwg.j.lindell}}

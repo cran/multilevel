@@ -2,20 +2,20 @@
 \alias{rwg.j.lindell}
 \title{Lindell et al. r*wg(j) agreement index for multi-item scales}
 \description{
-This function calculates the Lindell et al r*wg(j) within-group agreement index for multiple
-item measures.  It is similar to the James, Demaree and Wolf (1984) rwg and rwg(j) indices.  The
+Calculates the Lindell et al r*wg(j) within-group agreement index for multiple
+item measures. The r*wg(j) is similar to the James, Demaree and Wolf (1984) rwg and rwg(j) indices.  The
 r*wg(j) index is calculated by taking the average item variability as the Observed Group Variance, and using the
 average item variability in the numerator of the rwg formula (rwg=1-(Observed Group Variance/
-Expected Random Variance)).  In practice, this means that the r*wg(j) does not increase as the number of items in the 
-scale increases as does the rwg(j).  Additionally, the r*wg(j) allows Observed Group Variances to be
-larger than Expected Random Variances.  In practice this means that r*wg(j) values can be negative.
+Expected Random Variance)). In practice, this means that the r*wg(j) does not increase as the number of items in the 
+scale increases as does the rwg(j). Additionally, the r*wg(j) allows Observed Group Variances to be
+larger than Expected Random Variances. In practice this means that r*wg(j) values can be negative.
 }
 \usage{
 rwg.j.lindell(x, grpid, ranvar=2)
 }
 \arguments{
  \item{x}{A matrix representing the scale of interest upon which one is interested
-in estimating agreement.  Each column of the matrix represents a separate scale item,
+in estimating agreement. Each column of the matrix represents a separate scale item,
 and each row represents an individual respondent.}
  \item{grpid}{A vector identifying the groups from which x originated.}
  \item{ranvar}{The random variance to which actual group variances are compared.
@@ -40,7 +40,7 @@ appropriate random value for ranvar.}
 
 \author{
 Paul Bliese
-\email{paul.bliese@moore.sc.edu}
+\email{pdbliese@gmail.com}
 }
 
 \references{
@@ -54,6 +54,8 @@ Journal of Applied Psychology, 84, 640-647.
 }
 
 \seealso{
+\code{\link{ad.m}}
+\code{\link{awg}}
 \code{\link{rwg}}
 \code{\link{rwg.j}}
 \code{\link{rgr.agree}}

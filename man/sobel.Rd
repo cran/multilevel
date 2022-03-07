@@ -1,9 +1,9 @@
 \name{sobel}
 \alias{sobel}
 \title{Estimate Sobel's (1982) Test for Mediation}
-\description{Estimate Sobel's (1982) indirect test for mediation.  The function provides
+\description{Estimate Sobel's (1982) indirect test for mediation. The function provides
 an estimate of the magnitude of the indirect effect, Sobel's first-order estimate of the standard error
-associated with the indirect effect, and the corresponding z-value.  The estimates are based
+associated with the indirect effect, and the corresponding z-value. The estimates are based
 upon three models as detailed on page 84 of MacKinnon, Lockwood, Hoffman, West and Sheets (2002).}
 \usage{
 sobel(pred,med,out)
@@ -32,7 +32,7 @@ models.  In S. Leinhardt (Ed.), Sociological Methodology 1982 (pp. 290-312). Was
 Sociological Association.}
 
 \author{ Paul Bliese
- \email{paul.bliese@moore.sc.edu}}
+ \email{pdbliese@gmail.com}}
 
 \examples{
 data(bh1996)

@@ -2,7 +2,7 @@
 \alias{cordif}
 \title{Estimate whether two independent correlations differ}
 \description{
-This function tests for statistical differences between two independent
+Tests for statistical differences between two independent
 correlations using the formula provided on page 54 of Cohen & Cohen (1983).
 The function returns a z-score estimate.
 }
@@ -20,7 +20,7 @@ Produces a single value, the z-score for the differences between the correlation
 }     
 \author{
  Paul Bliese
- \email{paul.bliese@moore.sc.edu}
+ \email{pdbliese@gmail.com}
 }
 \references{
 Cohen, J. & Cohen, P. (1983).  Applied multiple regression/correlation analysis

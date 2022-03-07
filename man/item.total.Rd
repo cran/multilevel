@@ -1,7 +1,7 @@
 \name{item.total}
 \alias{item.total}
 \title{Item-total correlations}
-\description{This function calculates item-total correlations in multi-item scales.}
+\description{Calculates item-total correlations in multi-item scales.}
 \usage{
 item.total(items)
 }
@@ -10,7 +10,7 @@ item.total(items)
 }
 \value{
 	\item{Variable}{Variable examined in the reliability analyses.}
-	\item{Item.Total}{The item-total correlation.}
+	\item{Item.Total}{The item correlation with the mean of the other items.}
 	\item{Alpha.Without}{The Cronbach Alpha reliability estimate of the scale without the variable.}
 	\item{N}{The number of observations on which the analyses were calculated.}
 }
@@ -18,7 +18,7 @@ item.total(items)
 the internal structure of tests. Psychometrika, 16,297-334}
 
 \author{ Paul Bliese
- \email{paul.bliese@moore.sc.edu}}
+ \email{pdbliese@gmail.com}}
 
 \seealso{\code{\link{cronbach}}}
 
@@ -26,4 +26,4 @@ the internal structure of tests. Psychometrika, 16,297-334}
    data(bhr2000)
    item.total(bhr2000[,2:11])}
 
-\keyword{attribute}
+\keyword{reliability}

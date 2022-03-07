@@ -3,18 +3,18 @@
 \alias{bhr2000}
 \title{Data from Bliese, Halverson and Rothberg (2000)}
 \description{
-This data set contains the complete data used in Bliese, Halverson & Rotheberg (2000).
-The data set contains 14 variables with individual ratings of US Army Company leadership,
-work hours, and the degree to which individuals find comfort from religion.  The leadership and
-workhours variables are subsets of the Bliese and Halveson (1996) data set; however,
-in the case of leadership, the agree data set contains the 11 items that make up the scale
-whereas the bh1996 data set contains only the scale score.  Most items are on a strongly
-disagree to strongly agree scale.  The RELIG item is on a never to always scale.
+The complete data used in Bliese, Halverson and Rothberg (2000). Contains 14 variables referencing
+individual ratings of US Army Company leadership,
+work hours, and the degree to which individuals find comfort from religion. The leadership and
+workhours variables are subsets of the Bliese and Halveson (1996) data (bh1996); however,
+in the case of leadership, the data set contains the 11 scale items
+whereas the bh1996 data set contains only the scale score. Most items are on a strongly
+disagree to strongly agree scale. The RELIG item is on a never to always scale.
 }
 \usage{data(bhr2000)}
 \format{A data frame with 14 columns and 5,400 observations from 99 groups
 \tabular{llll}{
-[,1] \tab GRP     \tab numeric  \tab Group Identifier\cr
+[,1] \tab GRP     \tab numeric  \tab Group ID\cr
 [,2] \tab AF06   \tab numeric  \tab Officers get willing and whole-hearted cooperation\cr
 [,3] \tab AF07 \tab numeric  \tab NCOS most always get willing and whole-hearted cooperation\cr
 [,4] \tab AP12 \tab numeric  \tab I am impressed by the quality of leadership in this company\cr

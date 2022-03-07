@@ -1,7 +1,7 @@
 \name{cronbach}
 \alias{cronbach}
 \title{Estimate Cronbach's Alpha}
-\description{This function calculates the Cronbach's Alpha estimate of reliability for a multi-item scale.}
+\description{Calculates Cronbach's alpha estimate of reliability for a multi-item scale.}
 \usage{
 cronbach(items)
 }
@@ -16,7 +16,7 @@ cronbach(items)
 the internal structure of tests. Psychometrika, 16,297-334}
 
 \author{ Paul Bliese
- \email{paul.bliese@moore.sc.edu}}
+ \email{pdbliese@gmail.com}}
 
 
 \seealso{\code{\link{cronbach}}}
@@ -25,4 +25,4 @@ the internal structure of tests. Psychometrika, 16,297-334}
    data(bhr2000)
    cronbach(bhr2000[,2:11])
 }
-\keyword{attribute}
+\keyword{reliability}

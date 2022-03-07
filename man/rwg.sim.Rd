@@ -1,11 +1,10 @@
 \name{rwg.sim}
 \alias{rwg.sim}
 \title{Simulate rwg values from a random null distribution}
-\description{
-This function is based on the work of Dunlap, Burke & Smith-Crowe (2003).  The function draws data
+\description{Based on the work of Dunlap, Burke and Smith-Crowe (2003). Draws data
 from a random uniform null distribution, and calculates the within group agreement measure
-rwg for single item measures as described in James, Demaree & Wolf (1984).  By repeatedly
-drawing random samples, a distribution of the rwg is generated.  The sampling
+rwg for single item measures as described in James, Demaree and& Wolf (1984). By repeatedly
+drawing random samples, a null distribution of the rwg is generated. The null sampling
 distribution can be used to calculate confidence intervals for different combinations of group
 sizes and number of response options (A).
 }
@@ -16,8 +15,8 @@ rwg.sim(gsize, nresp, nrep)
  \item{gsize}{Group size upon which to base the rwg simulation.}
  \item{nresp}{The number of response options (e.g., there would be 5
 response options if using Strongly Disagree, Disagree, Neither, Agree, Strongly Agree).}
- \item{nrep}{The number of rwg values to simulate.  This will generally be 10,000 or more,
-although the examples use nrep of 1000 to make the calculations fast.}
+ \item{nrep}{The number of rwg values to simulate. This will generally be 10,000 or more,
+although the examples use nrep of 500 to reduce computational demands.}
 
 }
 
@@ -33,7 +32,7 @@ greater than or equal to rwg.95 are considered significant, p<.05.}
 
 \author{
 Paul Bliese
-\email{paul.bliese@moore.sc.edu}
+\email{pdbliese@gmail.com}
 }
 \references{
 Cohen, A., Doveh, E., & Eick, U. (2001).  Statistical properties of the rwg(j)
@@ -50,6 +49,7 @@ Psychology, 69, 85-98.
 
 \seealso{
  \code{\link{ad.m}}
+ \code{\link{awg}}
  \code{\link{rwg.j}}
  \code{\link{rwg}}
  \code{\link{rwg.j.sim}}
@@ -60,7 +60,7 @@ Psychology, 69, 85-98.
 \examples{
 #An example from Dunlap et al. (2003).  The estimate from Dunlap
 #et al. Table 2 is 0.53 (p=.05)
-RWG.OUT<-rwg.sim(gsize=10,nresp=5,nrep=1000)
+RWG.OUT<-rwg.sim(gsize=10,nresp=5,nrep=500)
 summary(RWG.OUT)
 quantile(RWG.OUT, c(.95,.99))
 }

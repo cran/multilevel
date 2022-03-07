@@ -1,10 +1,9 @@
 \name{cohesion}
 \docType{data}
 \alias{cohesion}
-\title{Five cohesion ratings from 11 individuals nested in 4 platoons in 2 larger units}
-\description{
-This data set contains five cohesion measures provided by 11 individuals.  The individuals
-providing the measures are members of four platoons further nested within two larger units.  This
+\title{Small nested cohesion data frame}
+\description{Contains five cohesion measures provided by 11 individuals. The individuals
+providing the measures are members of four platoons further nested within two larger units. This
 data file is used for demonstative purposes in the document "Multilevel Modeling in R" that
 accompanies this package.
 }

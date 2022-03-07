@@ -2,10 +2,10 @@
 \alias{quantile.disagree.sim}
 \title{S3 method for class 'disagree.sim'}
 \description{
-This function provides a concise quantile summary of objects created using
-the function ad.m.sim.  The simulation functions for the average deviation of
-the mean (or median) return a limited number of estimated values.  Consequently, the normal
-quantile methods are biased.  The quantile methods incorporated in this function
+Provides a concise quantile summary of objects created using
+the function ad.m.sim. The simulation functions for the average deviation of
+the mean (or median) return a limited number of estimated values. Consequently, the normal
+quantile methods are biased. The quantile methods incorporated in this function
 produce unbiased estimates. 
 }
 \usage{
@@ -25,7 +25,7 @@ and the second contains the estimate based on the object.
 
 \author{
 Paul Bliese
-\email{paul.bliese@moore.sc.edu}
+\email{pdbliese@gmail.com}
 }
 
 \seealso{

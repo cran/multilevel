@@ -1,8 +1,7 @@
 \name{summary.rgr.agree}
 \alias{summary.rgr.agree}
 \title{S3 method for class 'rgr.agree'}
-\description{
-This function provides a concise summary of objects created using
+\description{Provides a concise summary of objects created using
 the function rgr.agree. 
 }
 \usage{
@@ -22,16 +21,16 @@ Standard Deviation of random group variance, Actual group variance, z-value}
 
 \author{
 Paul Bliese
-\email{paul.bliese@moore.sc.edu}
+\email{pdbliese@gmail.com}
 }
 
 \seealso{
  \code{\link{rgr.agree}}
 }
 \examples{
-
+# Example with a small number of replications (500). Increase in actual use.
 data(bh1996)
-RGROUT<-rgr.agree(bh1996$HRS,bh1996$GRP,1000)
+RGROUT<-rgr.agree(bh1996$HRS,bh1996$GRP,500)
 summary(RGROUT)
 }
 \keyword{programming}

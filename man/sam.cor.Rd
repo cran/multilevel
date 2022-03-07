@@ -1,10 +1,10 @@
 \name{sam.cor}
 \alias{sam.cor}
-\title{Generate a Sample that Correlates with a Fixed Set of Observations}
-\description{This function will generate a vector (y) with a known correlation to a given vector (x).
-The degree of correlation between x and y is determined by the parameter rho (the population
-correlation).  Observed sample correlations between x and y will vary around rho, but this variation
-will decrease as the size of x increases.}
+\title{Generate a Sample that Correlates a Given Vector}
+\description{Generate a sample vector (y) with a known population correlation to a given vector (x).
+The degree of correlation between x and y is determined by rho (the population
+correlation). Observed sample correlations between x and y will vary around rho, but this variation
+will decrease as the number of x observations increase.}
 
 \usage{
 sam.cor(x,rho)
@@ -17,10 +17,10 @@ sam.cor(x,rho)
 	\item{y}{A vector of numbers correlated with x.}
 }
 
-\author{ Paul Bliese
- \email{paul.bliese@moore.sc.edu}}
+\author{Paul Bliese
+ \email{pdbliese@gmail.com}}
 
-\seealso{\code{\link{simbias}}}
+\seealso{\code{\link{sim.mlcor}}}
 
 \examples{
    data(bh1996)

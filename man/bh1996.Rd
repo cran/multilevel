@@ -2,14 +2,14 @@
 \docType{data}
 \alias{bh1996}
 \title{Data from Bliese and Halverson (1996)}
-\description{
-This dataset contains the complete data used in Bliese and Halverson
-(1996).  The dataset contains 4 variables.  These variables are Cohesion (COHES),
+\description{The complete data used in Bliese and Halverson
+(1996). The dataset contains 4 variables: Cohesion (COHES),
 Leadership Climate (LEAD), Well-Being (WBEING) and Work Hours (HRS).  Each of these
-variables has two variants -- a group mean version that replicates each group mean
-for every individual, and a within-group version where the group mean is subtracted
-from each individual response.  The group mean version is designated with a
-G. (e.g., G.HRS), and the within-group version is designated with a W. (e.g., W.HRS).
+variables has two variants - a group mean version that replicates each group mean
+for every individual in the group, and a within-group version where the group mean is subtracted
+from each individual response (i.e., a group-mean centered or demeaned variable). The group mean
+version is designated with a G. (e.g., G.HRS), and the within-group version
+is designated with a W. (e.g., W.HRS).
 }
 \usage{data(bh1996)}
 \format{A data frame with 13 columns and 7,382 observations from 99 groups

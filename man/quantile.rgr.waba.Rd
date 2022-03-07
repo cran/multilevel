@@ -1,8 +1,7 @@
 \name{quantile.rgr.waba}
 \alias{quantile.rgr.waba}
 \title{S3 method for class 'rgr.waba'}
-\description{
-This function provides a concise quantile summary of objects created using
+\description{Provides a concise quantile summary of objects created using
 the function rgr.waba. 
 }
 \usage{
@@ -10,10 +9,9 @@ the function rgr.waba.
 }
 \arguments{
 	 \item{x}{An object of class 'rgr.waba'.}
-	 \item{confint}{The confidence intervals to return.  The values of 0.025 and 0.975
-	   return the approximate two-tailed 95th percentile confidence intervals
-	   (p=.05).}
-	 \item{\dots}{Optional arguments.  None used.}
+	 \item{confint}{The confidence intervals to return. The values of 0.025 and 0.975
+return the approximate two-tailed 95th percentile confidence intervals (p=.05).}
+	 \item{\dots}{Optional arguments. None used.}
 }
 
 \value{A dataframe containing the confidence intervals for each parameter in the rgr.waba model.
@@ -21,7 +19,7 @@ the function rgr.waba.
 
 \author{
 Paul Bliese
-\email{paul.bliese@moore.sc.edu}
+\email{pdbliese@gmail.com}
 }
 
 \seealso{

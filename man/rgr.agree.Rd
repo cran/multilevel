@@ -1,10 +1,9 @@
 \name{rgr.agree}
 \alias{rgr.agree}
 \title{Random Group Resampling for Within-group Agreement}
-\description{
-This function uses random group resampling (RGR) to estimate within group
-agreement.  RGR agreement compares within group variances from
-actual groups to within group variances from pseudo groups.  Evidence of
+\description{Uses random group resampling (RGR) to estimate within group
+agreement. RGR agreement compares within group variances from
+actual groups to within group variances from pseudo groups. Evidence of
 significant agreement is inferred when variances from the actual groups
 are significantly smaller than variances from pseudo groups. RGR agreement
 methods are rarely reported, but provide another way to consider group
@@ -18,10 +17,10 @@ rgr.agree(x, grpid, nrangrps)
  \item{grpid}{A vector identifying the groups from which x originated (actual
 group membership).}
  \item{nrangrps}{A number representing the number of random groups to
-generate.  Note that the number of random groups
+generate. Note that the number of random groups
 created must be directly divisible by the number of actual groups
 to ensure that group sizes of pseudo groups and actual groups are
-identical.  The rgr.agree routine will generate the number of 
+identical. The rgr.agree routine will generate the number of 
 pseudo groups that most closely approximates nrangrps given the
 group size characteristics of the data.}
 }
@@ -36,7 +35,7 @@ group size characteristics of the data.}
 
 \author{
 Paul Bliese
-\email{paul.bliese@moore.sc.edu}
+\email{pdbliese@gmail.com}
 }
 \references{
 Bliese, P. D., & Halverson, R. R. (2002).  Using random group resampling in multilevel

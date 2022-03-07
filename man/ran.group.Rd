@@ -1,7 +1,7 @@
 \name{ran.group}
 \alias{ran.group}
 \title{Randomly mix grouped data and return function results}
-\description{This function is called by rgr.agree (and potentially other functions).
+\description{Called by rgr.agree (and potentially other functions).
 The ran.group function randomly mixes data and applies a function to the pseudo
 groups. Pseudo group IDs match real group IDs in terms of size.}
 \usage{
@@ -20,7 +20,7 @@ research.  Leadership Quarterly, 13, 53-68.}
 
 \author{
 Paul Bliese
- \email{paul.bliese@moore.sc.edu}}
+ \email{pdbliese@gmail.com}}
 
 \seealso{\code{\link{rgr.agree}}}
 

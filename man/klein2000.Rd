@@ -3,9 +3,9 @@
 \alias{klein2000}
 \title{Data from Klein, Bliese, Kozlowski et al., (2000)}
 \description{
-This data set contains the complete data used in Klein et al. (2000).  The Klein et al.
-chapter uses a simulated data set to compare and contrast WABA, HLM, and
-Cross-Level Operator Analyses (CLOP).  The simulated data set was created by Paul Bliese.
+Contains the complete data used in Klein et al. (2000). The Klein et al.
+chapter uses this simulated data set to compare and contrast WABA, HLM, and
+Cross-Level Operator Analyses (CLOP). The simulated data set was created by Paul Bliese.
 }
 \usage{data(klein2000)}
 \format{A data frame with 9 columns and 750 observations from 50 groups

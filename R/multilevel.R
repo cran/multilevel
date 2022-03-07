@@ -1,3 +1,4 @@
+#ad.m ####
 ad.m<-function (x, grpid,type="mean") 
 {
 NEWDAT <- data.frame(x, grpid = grpid)
@@ -34,7 +35,7 @@ OUTPUT <- data.frame(grpid = names(DATSPLIT), AD.M = ans1,
     return(OUTPUT)
 }
 
-########
+#ad.m.sim####
 
 ad.m.sim<-function (gsize, nitems = 1, nresp, itemcors = NULL, type = "mean", 
     nrep) 
@@ -75,7 +76,7 @@ ad.m.sim<-function (gsize, nitems = 1, nresp, itemcors = NULL, type = "mean",
  return(estout)
 }
 
-##########
+#quantile.disagree.sim####
 
 quantile.disagree.sim<-function(x, confint, ...)
 {
@@ -92,7 +93,7 @@ quantile.disagree.sim<-function(x, confint, ...)
 }
 
 
-##########
+#summary.disagree.sim####
 
 summary.disagree.sim<-function(object, ...)
 {
@@ -105,7 +106,8 @@ summary.disagree.sim<-function(object, ...)
     names(out)<-names(object)
     return(out)
 }
-#########################################################################################
+
+#awg ####
 awg<-function (x, grpid, range = c(1, 5)) 
 {
     NEWDAT <- data.frame(x, grpid = grpid)
@@ -170,17 +172,18 @@ awg<-function (x, grpid, range = c(1, 5))
     return(OUTPUT)
 }
 
-##################################################################################
+#boot.icc####
 boot.icc<-function(x, grpid, nboot, aov.est=FALSE){
    if(aov.est){
    data<-data.frame(grpid,x)  #fixes data because code below uses the first column to select level 2
    B.OUT<-rep(NA,nboot)
    ngrp<-length(unique(grpid))
+   ugrp<-unique(grpid)
    for(i in 1:nboot) {
        #The code below creates an empty list, selects a sample of level 2
        #units and then goes in and samples level-1 units for each level 2 unit
        ROUT<-list(NA)
-       rgrps<-sample(grpid,ngrp,replace=T)
+       rgrps<-sample(ugrp,ngrp,replace=T)
           for (k in 1:ngrp){
              ROUT[[k]]<-data.frame(newgrp=k,data[is.element(data[,1],rgrps[k]),])
              dindex<-sample(nrow(ROUT[[k]]),nrow(ROUT[[k]]),replace=T)
@@ -196,11 +199,12 @@ boot.icc<-function(x, grpid, nboot, aov.est=FALSE){
    data<-data.frame(grpid,x)  #fixes data because code below uses the first column to select level 2
    B.OUT<-rep(NA,nboot)
    ngrp<-length(unique(grpid))
+   ugrp<-unique(grpid)
    for(i in 1:nboot) {
        #The code below creates an empty list, selects a sample of level 2
        #units and then goes in and samples level-1 units for each level 2 unit
        ROUT<-list(NA)
-       rgrps<-sample(grpid,ngrp,replace=T)
+       rgrps<-sample(ugrp,ngrp,replace=T)
           for (k in 1:ngrp){
              ROUT[[k]]<-data.frame(newgrp=k,data[is.element(data[,1],rgrps[k]),])
              dindex<-sample(nrow(ROUT[[k]]),nrow(ROUT[[k]]),replace=T)
@@ -216,7 +220,7 @@ boot.icc<-function(x, grpid, nboot, aov.est=FALSE){
    return(B.OUT)
    }
 }
-##################################################################################
+#cordif####
 cordif<-function(rvalue1,rvalue2,n1,n2){
 	zvalue1<-.5*((log(1+rvalue1))-(log(1-rvalue1)))
 	zvalue2<-.5*((log(1+rvalue2))-(log(1-rvalue2)))
@@ -225,7 +229,7 @@ cordif<-function(rvalue1,rvalue2,n1,n2){
 	return(out)
 }
 
-#########################################################################################
+#cordif.dep####
 cordif.dep<-function(r.x1y, r.x2y, r.x1x2, n)
 {
 #
@@ -244,7 +248,7 @@ cordif.dep<-function(r.x1y, r.x2y, r.x1x2, n)
         OUT <- data.frame(t.value, DF, p.value)
         return(OUT)
 }
-#########################################################################################
+#cronbach####
 cronbach<-function(items)
 {
 	items<-na.exclude(items)	
@@ -256,8 +260,102 @@ cronbach<-function(items)
 	return(OUT)
 }
 
-########################################################################################
-GmeanRel<-function(object)
+#dgm.code####
+dgm.code<-function(grp,time,event,n.events=FALSE,first.obs=FALSE){
+  #ensure data structure is correct
+  newdata<-data.frame(grp=grp,time=time,event=event)
+  newdata<-na.exclude(newdata)
+  newdata<-newdata[order(newdata$grp,newdata$time),]
+  
+  #If first observation is an event and first.obs is TRUE
+  #change the first observation to a non-event
+  if(first.obs){
+    fobs.grps<-newdata$grp[!duplicated(newdata$grp)&(newdata$event==1)]
+    #print(fobs.grps)
+    newdata$event[!duplicated(newdata$grp)&(newdata$event==1)]<-0
+  }
+  
+  #Check to see if first observation is an event
+  s.event<-nrow(newdata[!duplicated(newdata$grp)&(newdata$event==1),])
+  if(s.event>0){
+    print("The following groups start with an event")
+    print(newdata[!duplicated(newdata$grp)&(newdata$event==1),])
+    print("Drop the groups or use the first.obs=TRUE option")
+    stop() 
+  }
+  
+  #count the maximum number of events for any group
+  max.events<-max(with(newdata,tapply(event,grp,sum)))
+  n.grps<-length(unique(newdata$grp))
+  
+  #adjust the maximum number of events to a specified level
+  if(n.events){
+    max.events=n.events
+  }
+  
+  # Set up the structure for the output
+  ANS<-matrix(0,nrow(newdata),ncol=max.events*2)
+  ANS<-data.frame(ANS)
+  names(ANS)<-c(paste0("trans",c(1:max.events)),paste0("post",c(1:max.events)))
+  ANS<-data.frame(ANS,grp=newdata$grp,time=newdata$time,event=newdata$event)
+  g.size<-tapply(newdata$grp,newdata$grp,length)
+  #  ANS$cum.event<-unlist(tapply(ANS$event,ANS$grp,cumsum))
+  ANS$time.a<-ANS$time
+  ANS$cum.event<-do.call(c, tapply(ANS$event, ANS$grp, FUN=cumsum))
+  ANS$num.grp<-rep(1:n.grps,times=g.size) #create a numeric group for loops
+  
+  # Add two check variables for total events and whether an event
+  # occured on the first occasion
+  ANS$tot.events<-NA
+  ANS$event.first<-0
+  
+  if(first.obs){
+    ANS$event.first[ANS$grp%in%fobs.grps]<-1
+  }
+  
+  #collapse the number of events to a specified level
+  if(n.events){
+    ANS$cum.event<-ifelse(ANS$cum.event>n.events,n.events,ANS$cum.event)
+  }
+  
+  # Set up a factor outside of the loop to get all levels
+  ANS$cum.event.f<-factor(ANS$cum.event,levels=c(0:max.events))
+  
+  # Set up a loop to put values in trans and post variables
+  # First skip groups with no events
+  for(i in 1:n.grps){
+    if(sum(ANS$event[ANS$num.grp==i])==0){
+      ANS$tot.events[ANS$num.grp==i]<-0
+      next(i)
+    }
+    # Use model.matrix to set up dummy codes for trans and post
+    ANS[ANS$num.grp==i,1:max.events]<-model.matrix(~C(cum.event.f,contr.treatment),data=ANS[ANS$num.grp==i,])[,2:(max.events+1)]
+    ANS[ANS$num.grp==i,(max.events+1):(2*max.events)]<-model.matrix(~C(cum.event.f,contr.treatment),data=ANS[ANS$num.grp==i,])[,2:(max.events+1)]
+    if(max.events==1){
+      ANS[ANS$num.grp==i,2]<-cumsum(ANS[ANS$num.grp==i,2])-1
+    }
+    if(max.events>1){
+      ANS[ANS$num.grp==i,(max.events+1):(2*max.events)]<-apply(ANS[ANS$num.grp==i,(max.events+1):(2*max.events)],2,cumsum)-1
+    }
+    ANS$time.a[ANS$num.grp==i]<-ifelse(ANS$cum.event[ANS$num.grp==i]==0,ANS$time[ANS$num.grp==i],NA)
+    ANS$time.a[is.na(ANS$time.a)&ANS$num.grp==i]<-max(ANS$time.a[!is.na(ANS$time.a)&ANS$num.grp==i])
+    ANS$tot.events[ANS$num.grp==i]<-sum(ANS$event[ANS$num.grp==i])
+    next(i)
+  }
+  # Clean up the ANS matrix column by column
+  # print(ANS) to see the structure of the previous loop
+  for(j in 1:max.events){
+    ANS[,max.events+j]<-ifelse(ANS[,j]==0,0,ANS[,max.events+j])
+    next(j)
+  }
+  
+  #rearrange the ANS matrix for output
+  #print(ANS[1:30,]) to see the first 30 rows of complete data
+  ANS[,c((max.events*2)+1:3,1:(max.events*2),(max.events*2)+c(4,7,8))]
+}
+
+#GmeanRel####
+gmeanrel<-function(object)
 {
 	OUTFILE<-aggregate(object$group,object$group,length)
 	names(OUTFILE)<-c("Group","GrpSize")
@@ -270,7 +368,7 @@ GmeanRel<-function(object)
 	class(estout)<-"gmeanrel"
 	return(estout)
 }
-#########################################################################################
+#graph.ran.mean####
 graph.ran.mean<-function(x, grpid, nreps, limits, graph=TRUE, bootci=FALSE)
 {
  if(bootci){
@@ -345,7 +443,7 @@ graph.ran.mean<-function(x, grpid, nreps, limits, graph=TRUE, bootci=FALSE)
   }
 }
 
-#########################################################################################
+#ICC1####
 ICC1<- function(object)
 {
 	MOD <- summary(object)
@@ -357,7 +455,7 @@ ICC1<- function(object)
 	return(OUT)
 }
 
-#########################################################################################
+#ICC2####
 ICC2 <-function(object)
 {
 	MOD <- summary(object)
@@ -366,7 +464,7 @@ ICC2 <-function(object)
 	OUT <- (MSB - MSW)/MSB
 	return(OUT)
 }
-########################################################################################
+#item.total####
 item.total<-function(items)
 {
 items<-na.exclude(items)
@@ -381,7 +479,8 @@ items<-na.exclude(items)
                 Alpha.Without=as.numeric(ans[,3]),N=nrow(items))
         return(OUT)
 }
-########################################################################################
+
+#make.univ####
 make.univ<-function (x, dvs, tname="TIME", outname="MULTDV") 
 {
     NREPOBS <- ncol(dvs)        
@@ -393,7 +492,7 @@ make.univ<-function (x, dvs, tname="TIME", outname="MULTDV")
     return(FINAL.DAT)
 }
 
-########################################################################################
+#mix.data####
 mix.data<-function (x, grpid) 
 {
     TDAT <- cbind(rnorm(length(grpid)), grpid, x)
@@ -405,7 +504,7 @@ mix.data<-function (x, grpid)
     OUT <- cbind(newid, TDAT[, 2:ncol(TDAT)])
     return(OUT)
 }
-#######################################################################################
+#mult.icc####
 mult.icc<-function (x, grpid) 
 {
     ans <- data.frame(Variable = names(x[, 1:ncol(x)]), ICC1 = as.numeric(rep(NA, 
@@ -424,7 +523,7 @@ mult.icc<-function (x, grpid)
     }
     return(ans)
 }
-########################################################################################
+#mult.make.univ####
 mult.make.univ <- function(x,dvlist,tname="TIME",outname="MULTDV")
 {
   NREPOBS <- length(dvlist[[1]])
@@ -439,14 +538,15 @@ mult.make.univ <- function(x,dvlist,tname="TIME",outname="MULTDV")
   FINAL.DAT <- data.frame(UNIV.DAT,FINAL.UNIV)
   return(FINAL.DAT)
 }
-########################################################################################
+#sam.cor####
 sam.cor<-function(x,rho)
 {
 	y <- (rho * (x - mean(x)))/sqrt(var(x)) + sqrt(1 - rho^2) * rnorm(length(x))
 	cat("Sample corr = ", cor(x, y), "\n")
 	return(y)
 }
-########################################################################################
+
+#rmv.blanks####
 rmv.blanks<-function (object) 
 {
     OUT <- lapply(object, function(xsub) {
@@ -457,7 +557,7 @@ rmv.blanks<-function (object)
     })
     return(data.frame(OUT))
 }
-########################################################################################
+#rgr.agree####
 rgr.agree<-function (x, grpid, nrangrps) 
 {
     GVARDAT <- tapply(x, grpid, var)
@@ -534,8 +634,8 @@ summary.rgr.agree<-function(object, ...)
 }
 
 
-#######################################################################################
-rgr.OLS<-function(xdat1, xdat2, ydata, grpid, nreps)
+#rgr.OLS####
+rgr.ols<-function(xdat1, xdat2, ydata, grpid, nreps)
 {
 #
 # The number of columns in the output matrix has to correspond to
@@ -556,7 +656,7 @@ for(k in 1:nreps) {
 }
 return(OUT)
 }
-########################################################################################
+#rgr.waba####
 rgr.waba<-function(x, y, grpid, nrep)
 {
 #
@@ -649,13 +749,14 @@ quantile.rgr.waba<-function (x, confint, ...)
     return(ans)
 }
 
-########################################################################################
+#rtoz####
 rtoz<-function(rvalue){
 	zest<-.5*((log(1+rvalue))-(log(1-rvalue)))
-	out<-list("z prime"=zest)
-	return(out)
+	#out<-list("z prime"=zest)
+	return(zest)
 }
-########################################################################################
+
+#rwg####
 rwg<-function(x, grpid, ranvar=2) 
 {
 
@@ -681,7 +782,7 @@ out}
 
 
 
-
+#rwg.j####
 rwg.j<-function(x, grpid,ranvar=2)
 {
     NEWDAT<-data.frame(x,grpid=grpid)
@@ -708,7 +809,7 @@ out
     return(OUTPUT)
 }
 
-
+#rwg.j.lindell####
 rwg.j.lindell<-function (x, grpid, ranvar = 2) 
 {
     NEWDAT<-data.frame(x,grpid=grpid)
@@ -733,10 +834,7 @@ out
 
 
 
-##########################################################################
-#  Following functions pertain to simulating various agreement values    #
-##########################################################################
-
+#rwg.sim####
 rwg.sim<-function (gsize, nresp, nrep) 
 {
     OUT <- rep(NA, nrep)
@@ -755,7 +853,7 @@ rwg.sim<-function (gsize, nresp, nrep)
     return(estout)
 }
 
-#######
+#rwg.j.sim####
 
 rwg.j.sim<-function(gsize, nitems, nresp, itemcors = NULL, nrep) 
 {
@@ -789,7 +887,7 @@ rwg.j.sim<-function(gsize, nitems, nresp, itemcors = NULL, nrep)
 }
 
 
-########
+#summary.agree.sim####
 
 summary.agree.sim<-function(object, ...)
 {
@@ -802,7 +900,7 @@ summary.agree.sim<-function(object, ...)
     return(out)
 }
 
-########
+#quantile.agree.sim####
 
 quantile.agree.sim<-function(x, confint, ...)
 {
@@ -817,7 +915,7 @@ quantile.agree.sim<-function(x, confint, ...)
  return(out)
 }
 
-###################################################################################
+#simbias####
 simbias<-function(corr, gsize, ngrp, icc1x, icc1y, nrep)
 {
 ANS <- matrix(NA, nrep, 8)
@@ -854,7 +952,8 @@ names(ANS) <- c("icc1.x", "icc1.y", "lme.coef", "lme.se", "lme.tvalue",
 "lm.coef", "lm.se", "lm.tvalue")
 return(ANS)
 }
-###################################################################################
+
+#sim.icc####
 sim.icc<-function (gsize, ngrp, icc1,nitems=1,item.cor=FALSE) 
 {
     if(!item.cor){
@@ -899,7 +998,52 @@ sim.icc<-function (gsize, ngrp, icc1,nitems=1,item.cor=FALSE)
     return(ANS)
     }
 }
-###################################################################################
+#sim.mlcor ####
+sim.mlcor<-function(gsize,ngrp,gcor,wcor,icc1x,icc1y,alphax=1,alphay=1){
+  # The group-level correlation is simulated using means from a
+  # third variable (GMEANS). Because each variable is correlated with
+  # this 3rd variable, we need to "double" the group correlation by taking the 
+  # square-root of the correlation. This way the product of the two "paths"
+  # give the correct correlation. An if statement handles negative values below.
+  gcor.s<-sqrt(abs(gcor))
+  #Create two variables: VAR1 for X, VAR2 for Y. The correlation between
+  #VAR1 (X) and VAR2 (Y) is the within, but since there are no group-level
+  #properties associated with VAR1 (X) it is fine to just run a raw
+  #correlation for the within estimate.
+  VAR1<-rnorm(gsize*ngrp)
+  VAR2<-(wcor * (VAR1 - mean(VAR1)))/sqrt(var(VAR1)) + sqrt(1 - wcor^2) * rnorm(length(VAR1))
+  #Adjust the Within for reliability
+  ALPHAX<-sqrt(alphax)
+  VAR1<-(ALPHAX * (VAR1 - mean(VAR1)))/sqrt(var(VAR1)) + sqrt(1 - ALPHAX^2) *  rnorm(length(VAR1))
+  ALPHAY<-sqrt(alphay)
+  VAR2<-(ALPHAY * (VAR2 - mean(VAR2)))/sqrt(var(VAR2)) + sqrt(1 - ALPHAY^2) *  rnorm(length(VAR2))
+  #The Vector below represents the separate Group Mean vector that G.X and G.Y
+  #are built on. Add a GROUP ID
+  GMEANS<-rnorm(ngrp)
+  GID<-rep(1:ngrp,each=gsize)
+  #The Code below calculates a group mean for G.X that is correlated with 
+  #the group means (GMEANS). Then it repeats the estimate within each group
+  #so the number of values matches the number of level-1 observations, and 
+  #it can be combined with the individual variable to create the final X.
+  X.G<-(gcor.s * (GMEANS - mean(GMEANS)))/sqrt(var(GMEANS))+sqrt(1-gcor.s^2)*rnorm(ngrp)
+  X.G<-rep(X.G,each=gsize)
+  #The line below creates the final X variable by combining VAR1 (the Level 1
+  #variable) and X.G (the expanded level 2 variable) together with weights
+  #determined by the ICC variable for X. The higher the ICC, the more X.G is weighted.
+  X<-sqrt(icc1x)*X.G+sqrt(1-icc1x)*VAR1
+  # Same set of procedures to create a Y variable
+  Y.G<-(gcor.s * (GMEANS - mean(GMEANS)))/sqrt(var(GMEANS))+sqrt(1-gcor.s^2)*rnorm(ngrp)
+  # Minor change here to reverse code Y.G to get negative values.
+  # Note that this corresponds to the creation of VAR2 above in that VAR2
+  # which is Y.G's referent is the negative value created in reference to VAR1
+  Y.G<-rep(Y.G,each=gsize)
+  if(gcor<0)
+    Y.G<-Y.G*-1
+  Y<-sqrt(icc1y)*Y.G+sqrt(1-icc1y)*VAR2
+  #Return the raw variables
+  return(data.frame(GRP=GID,X,Y))
+}
+#sobel####
 sobel<-function(pred,med,out){
 	NEWDAT<-data.frame(pred=pred,med=med,out=out)
 	NEWDAT<-na.exclude(NEWDAT)
@@ -917,7 +1061,8 @@ out<-list('Mod1: Y~X'=mod1.out,'Mod2: Y~X+M'=mod2.out,'Mod3: M~X'=mod3.out,
 	Indirect.Effect=indir,SE=serr,z.value=zvalue,N=nrow(NEWDAT))
 return(out)
 }
-####################################################################################
+
+#waba####
 waba<-function(x, y, grpid)
 {
 	SMAT <- na.exclude(data.frame(grpid, x, y))

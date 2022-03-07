@@ -1,34 +1,32 @@
 \name{rwg.j.sim}
 \alias{rwg.j.sim}
 \title{Simulate rwg(j) values from a random null distribution}
-\description{
-This function is based on the work of Cohen, Doveh and Eick (2001) and Cohen, Doveh and Nahum-Shani
-(2009).  The function draws data from a random uniform null distribution, and calculates the James,
-Demaree and Wolf (1984) within group agreement measure rwg(j) for multiple item scales.  By
-repeatedly drawing random samples, a distribution of the rwg(j) is generated.  The sampling
+\description{Based on the work of Cohen, Doveh and Eick (2001) and Cohen, Doveh and Nahum-Shani
+(2009). Draws data from a random uniform null distribution and calculates the James,
+Demaree and Wolf (1984) within group agreement measure rwg(j) for multiple item scales. By
+repeatedly drawing random samples, a null distribution of the rwg(j) is generated. The null sampling
 distribution can be used to calculate confidence intervals for different combinations of group
-sizes and number of items (J).  Users provide the number of scale response options (A) and the
-number of random samples.  By default, items (J) drawn in the simulation are independent
+sizes and number of items (J). Users provide the number of scale response options (A) and the
+number of random samples. By default, items (J) drawn in the simulation are independent
 (non-correlated); however, an optional argument (itemcors) allows the user to specify a correlation
-matrix with relationships among items.  Cohen et al. (2001) show that values of rwg(j) are primarily
+matrix with relationships among items. Cohen et al. (2001) show that values of rwg(j) are primarily
 a function of the number of items and the group size and are not strongly influenced by
 correlations among items; nonetheless, assuming correlations among items is more realistic and
-thereby is a preferred model (see Cohen et al., 2009).  If item correlations are provided, the MASS
-library also needs to be attached. 
+thereby is a preferred model (see Cohen et al., 2009). 
 }
 \usage{
 rwg.j.sim(gsize, nitems, nresp, itemcors=NULL, nrep)
 }
 \arguments{
  \item{gsize}{Group size used in the rwg(j) simulation.}
- \item{nitems}{The number of items (J) in the multi-item scale on which to base the simulation.  If
+ \item{nitems}{The number of items (J) in the multi-item scale on which to base the simulation. If
 itemcors are provided, this is an optional argument as nitems will be calculated from the
 correlation matrix.}
  \item{nresp}{The number of response options for the J items in the simulation (e.g., there would be 5
 response options if using Strongly Disagree, Disagree, Neither, Agree, Strongly Agree).}
  \item{itemcors}{An optional argument containing a correlation matrix with the item correlations.}
- \item{nrep}{The number of rwg(j) values to simulate.  This will generally be 10,000 or more, but
-only 1,000 are used in the examples to increase the speed.}
+ \item{nrep}{The number of rwg(j) values to simulate. This will generally be 10,000 or more, but
+only 500 are used in the examples to reduce computational demands.}
 
 }
 
@@ -45,7 +43,7 @@ greater than or equal to the rwg.j.95 value are considered significant.}
 
 \author{
 Paul Bliese
-\email{paul.bliese@moore.sc.edu}
+\email{pdbliese@gmail.com}
 }
 \references{
 Cohen, A., Doveh, E., & Nahum-Shani, I. (2009).  Testing agreement for multi-item scales
@@ -70,7 +68,7 @@ Psychology, 69, 85-98.
 
 \examples{
 #An example assuming independent items
-RWG.J.OUT<-rwg.j.sim(gsize=10,nitems=6,nresp=5,nrep=1000)
+RWG.J.OUT<-rwg.j.sim(gsize=10,nitems=6,nresp=5,nrep=500)
 summary(RWG.J.OUT)
 quantile(RWG.J.OUT, c(.95,.99))
 
@@ -78,10 +76,9 @@ quantile(RWG.J.OUT, c(.95,.99))
 #estimate in Cohen et al. (2006) is .61.
 
 data(lq2002)
-library(MASS)
 RWG.J.OUT<-rwg.j.sim(gsize=10,nresp=5,
   itemcors=cor(lq2002[,c("TSIG01","TSIG02","TSIG03")]),
-  nrep=1000)
+  nrep=500)
 summary(RWG.J.OUT)
 quantile(RWG.J.OUT,c(.95,.99))
 }
