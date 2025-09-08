@@ -36,7 +36,7 @@ coefficients.  Psychological Bulletin, 83, 762-765.
 \seealso{
  \code{\link{ICC1}}
  \code{\link{ICC2}}
- \code{\link{lme}}
+ \code{\link[nlme]{lme}}
 }
 \examples{
 data(bh1996)

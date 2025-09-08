@@ -1,4 +1,4 @@
-77aa8cb8945c8806bcbb820813f2f008 *DESCRIPTION
+08ee7abb6464290cc82c3d4e13039c05 *DESCRIPTION
 42013ccc402ea0a1d096704448df0d6d *NAMESPACE
 dffccd0fb25fdc702ccd58591c985120 *R/multilevel.R
 981fb3a1192c96534283fd4fc0dede48 *data/bh1996.rda
@@ -25,7 +25,7 @@ b368d93107ddca9dcce529456c70becb *man/cohesion.Rd
 8a2994af3679e1f88f49edfc0ab0c0ec *man/cordif.dep.Rd
 834b179d895458ff857576bb4a6e8b17 *man/cronbach.Rd
 4f618bbeecc9f524f965ebd74734d2f3 *man/dgm.code.Rd
-2f4e793202a9ab4a020615b6c686772a *man/gmeanrel.Rd
+05ac5cc1bda1561f15c1fb11d294d22e *man/gmeanrel.Rd
 6be30db1b37930a94f729044397b9da3 *man/graph.ran.mean.Rd
 f2595abd787c5581dddd5f4d3cd8effb *man/item.total.Rd
 fc16ea396311eb82fdfad50029fbbce0 *man/klein2000.Rd
