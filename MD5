@@ -1,6 +1,7 @@
-08ee7abb6464290cc82c3d4e13039c05 *DESCRIPTION
+38d7f95fef8089cb895bcafc60224271 *DESCRIPTION
 42013ccc402ea0a1d096704448df0d6d *NAMESPACE
-dffccd0fb25fdc702ccd58591c985120 *R/multilevel.R
+b1b5ec69dd3bcfa947f763098f1c58f3 *R/multilevel.R
+c9a11d31478c14bb6eece2f96705d5ca *data/banddat.rda
 981fb3a1192c96534283fd4fc0dede48 *data/bh1996.rda
 bb1bf3921e48135826a20ad7b40c7c19 *data/bhr2000.rda
 3d25dac8ac2adf0646a7601cdf537739 *data/chen2005.rda
@@ -16,6 +17,7 @@ b9587f75db50853e25b76e531994584a *data/klein2000.rda
 b0428bcbb835a522cb2b89f519977d9a *man/ad.m.Rd
 7e50bb44cbe042d19a222cf9efa616f3 *man/ad.m.sim.Rd
 90df8572ce9f3c988c18dcf7d5df302d *man/awg.Rd
+c4e020b22101f9b10fcc812356c44212 *man/banddat.Rd
 049fdcba1620180e9d03f0a741ae9e42 *man/bh1996.Rd
 1109830bcd77099573a268ec23083cfe *man/bhr2000.Rd
 262ff9428585856afa15b07c1ac85495 *man/boot.icc.Rd
@@ -23,6 +25,7 @@ bd92585b85eff70f3c314c4d9ea1bb1c *man/chen2005.Rd
 b368d93107ddca9dcce529456c70becb *man/cohesion.Rd
 726cfde5a9a38005ddae37a106fa56bd *man/cordif.Rd
 8a2994af3679e1f88f49edfc0ab0c0ec *man/cordif.dep.Rd
+56f81ff2f3e1c8a7cba3f889fdd00eea *man/correct.gcor.Rd
 834b179d895458ff857576bb4a6e8b17 *man/cronbach.Rd
 4f618bbeecc9f524f965ebd74734d2f3 *man/dgm.code.Rd
 05ac5cc1bda1561f15c1fb11d294d22e *man/gmeanrel.Rd
@@ -34,7 +37,7 @@ d672e9f708ee5c275e60441a07e1375d *man/make.univ.Rd
 706b0144e400d1c1570de9f33668abeb *man/mix.data.Rd
 fc00124a12637257c6b75ecb6e20f96b *man/mult.icc.Rd
 ed600328bf932730ad205ae1d3cf47b4 *man/mult.make.univ.Rd
-9ca6627a4185f6556108ce311de9ebdf *man/paneldat.Rd
+73cc0cdfce6dd6e113ad9a8e1f682063 *man/paneldat.Rd
 e6a838b5d21fb919c4f4543f3d27a250 *man/quantile.agree.sim.Rd
 357c9d098d22b7454dc8b5e75e018580 *man/quantile.disagree.sim.Rd
 5573e84c6021f67423d299abf395492f *man/quantile.rgr.waba.Rd
@@ -45,8 +48,8 @@ c8be9da00691af6e0aa6ffd6bfceb590 *man/rgr.ols.Rd
 fad8b1f281c5d7f7b01d8f1790691cd9 *man/rmv.blanks.Rd
 05a5fa796552e64a75d63f7fc59e433a *man/rtoz.Rd
 9bc3661811aced5d95478f488e9ca528 *man/rwg.Rd
-73abd069660a9ea657103ae281cf3029 *man/rwg.j.Rd
-0cd28ed09a9406eb0feb4f20a9c9935f *man/rwg.j.lindell.Rd
+e463462c43fe66bad48e18fca5cd198c *man/rwg.j.Rd
+4fdd9718333858937c1c182a67bb6184 *man/rwg.j.lindell.Rd
 de8efc9ef99c20f913710a17c58b872e *man/rwg.j.sim.Rd
 1c51f1b9e8c752118b6a07e935e0bcf5 *man/rwg.sim.Rd
 08e80be0140481e6ddbb6e3add28b847 *man/sam.cor.Rd

@@ -3,15 +3,17 @@
 \title{Lindell et al. r*wg(j) agreement index for multi-item scales}
 \description{
 Calculates the Lindell et al r*wg(j) within-group agreement index for multiple
-item measures. The r*wg(j) is similar to the James, Demaree and Wolf (1984) rwg and rwg(j) indices.  The
-r*wg(j) index is calculated by taking the average item variability as the Observed Group Variance, and using the
-average item variability in the numerator of the rwg formula (rwg=1-(Observed Group Variance/
-Expected Random Variance)). In practice, this means that the r*wg(j) does not increase as the number of items in the 
-scale increases as does the rwg(j). Additionally, the r*wg(j) allows Observed Group Variances to be
-larger than Expected Random Variances. In practice this means that r*wg(j) values can be negative.
+item measures. The r*wg(j) is similar to the James, Demaree and Wolf (1984) rwg
+and rwg(j) indices. The r*wg(j) index is calculated by taking the average item
+variability as the Observed Group Variance, and using the average item variability
+in the numerator of the rwg formula (rwg=1-(Observed Group Variance/Expected
+Random Variance)). As a consequence, the r*wg(j) does not increase as the number
+of items in the scale increases as does the rwg(j). Additionally, the r*wg(j)
+allows Observed Group Variances to be larger than Expected Random Variances.
+In practice this means that r*wg(j) values can be negative.
 }
 \usage{
-rwg.j.lindell(x, grpid, ranvar=2)
+rwg.j.lindell(x, grpid, ranvar=2,listwise=FALSE)
 }
 \arguments{
  \item{x}{A matrix representing the scale of interest upon which one is interested
@@ -25,10 +27,12 @@ Strongly Disagree, Disagree, Neither, Agree, Strongly Agree).
 In cases where there are not 5 response options, the rectangular
 distribution is estimated using the formula
 \eqn{\mathtt{ranvar}=(A^{2}-1)/12}{ranvar=(A^2-1)/12}
-where
-A is the number of response options.  Note that one is not limited
+where A is the number of response options. Note that one is not limited
 to the rectangular distribution; rather, one can include any 
 appropriate random value for ranvar.}
+ \item{listwise}{Performs listwise deletion of missing values in scale items.
+Listwise deletion was the default prior to version 2.8 but is not recommended.
+Option is included for backward compatability.}
 }
 
 \value{

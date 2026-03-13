@@ -248,6 +248,16 @@ cordif.dep<-function(r.x1y, r.x2y, r.x1x2, n)
         OUT <- data.frame(t.value, DF, p.value)
         return(OUT)
 }
+#correct.gcor####
+correct.gcor<-function(w.corr,b.corr,icc1.x, icc2.x=NA, icc1.y, icc2.y=NA, gsize){
+  icc2.x<-ifelse(!is.na(icc2.x), icc2.x, 
+                 (gsize * icc1.x)/(1 + (gsize - 1) * icc1.x))
+  #print(icc2.x)
+  icc2.y<-ifelse(!is.na(icc2.y), icc2.y, 
+                 (gsize * icc1.y)/(1 + (gsize - 1) * icc1.y))
+  #print(icc2.y)
+  corrected<-w.corr+(b.corr-w.corr)/sqrt(icc2.x*icc2.y)
+  return(corrected)}
 #cronbach####
 cronbach<-function(items)
 {
@@ -354,7 +364,7 @@ dgm.code<-function(grp,time,event,n.events=FALSE,first.obs=FALSE){
   ANS[,c((max.events*2)+1:3,1:(max.events*2),(max.events*2)+c(4,7,8))]
 }
 
-#GmeanRel####
+#gmeanrel####
 gmeanrel<-function(object)
 {
 	OUTFILE<-aggregate(object$group,object$group,length)
@@ -447,6 +457,9 @@ graph.ran.mean<-function(x, grpid, nreps, limits, graph=TRUE, bootci=FALSE)
 ICC1<- function(object)
 {
 	MOD <- summary(object)
+	if(MOD[[1]][1, 1]==1){
+	  warning("The model has only 1 Df in the numerator. Likely misspecified.")
+	}
 	MSB <- MOD[[1]][1, 3]
 	MSW <- MOD[[1]][2, 3]
 	GSIZE <- (MOD[[1]][2, 1] + (MOD[[1]][1, 1] + 1))/(MOD[[1]][1, 1] + 1)	
@@ -459,6 +472,9 @@ ICC1<- function(object)
 ICC2 <-function(object)
 {
 	MOD <- summary(object)
+	if(MOD[[1]][1, 1]==1){
+	  warning("The model has only 1 Df in the numerator. Likely misspecified.")
+	}
 	MSB <- MOD[[1]][1, 3]
 	MSW <- MOD[[1]][2, 3]
 	OUT <- (MSB - MSW)/MSB
@@ -783,15 +799,16 @@ out}
 
 
 #rwg.j####
-rwg.j<-function(x, grpid,ranvar=2)
+rwg.j<-function(x, grpid,ranvar=2,listwise=FALSE)
 {
     NEWDAT<-data.frame(x,grpid=grpid)
-    NEWDAT<-na.exclude(NEWDAT)
+    if(listwise)
+      NEWDAT<-na.exclude(NEWDAT)
     DATSPLIT <- split(NEWDAT[,1:(ncol(NEWDAT)-1)], NEWDAT$grpid)
     ans1 <- lapply(DATSPLIT, function(Q) {
         J <- ncol(Q)
         if (nrow(Q) > 1) {
-            S <- mean(apply(Q, 2, var,na.rm=T))
+            S <- mean(apply(Q, 2, var,na.rm=TRUE))
             if (S > ranvar) 
                 S <- ranvar
             out <- (J * (1 - (S/ranvar)))/((J * (1 - (S/ranvar))) + 
@@ -810,14 +827,15 @@ out
 }
 
 #rwg.j.lindell####
-rwg.j.lindell<-function (x, grpid, ranvar = 2) 
+rwg.j.lindell<-function (x, grpid, ranvar = 2,listwise=FALSE) 
 {
     NEWDAT<-data.frame(x,grpid=grpid)
-    NEWDAT<-na.exclude(NEWDAT)
+    if(listwise)
+      NEWDAT<-na.exclude(NEWDAT)
     DATSPLIT <- split(NEWDAT[,1:(ncol(NEWDAT)-1)], NEWDAT$grpid)
     ans1 <- lapply(DATSPLIT, function(Q) {
         if (nrow(Q) > 1) {
-            S <- mean(apply(Q, 2, var))
+            S <- mean(apply(Q, 2, var,na.rm=TRUE))
             out <- 1-(S/ranvar)
             out
         }

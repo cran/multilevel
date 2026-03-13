@@ -5,12 +5,13 @@
 Calculates the within group agreement measure rwg(j) for multiple
 item measures as described in James, Demaree and Wolf (1984). James et al. (1984)
 recommend truncating the Observed Group Variance to the Expected Random Variance in
-cases where the Observed Group Variance was larger than the Expected Random Variance.
-This truncation results in an rwg.j value of 0 (no agreement) for groups with large
-variances.
+cases where the Observed Group Variance is larger than the Expected Random Variance.
+This truncation results in an rwg.j value of 0 (no agreement) for groups with
+variances (or average variance across items in the case of the rwg.j) are larger
+than the Expected Random Variance.
 }
 \usage{
-rwg.j(x, grpid, ranvar=2)
+rwg.j(x, grpid, ranvar=2, listwise=FALSE)
 }
 \arguments{
  \item{x}{A matrix representing the scale items. Each column of the matrix
@@ -25,6 +26,9 @@ distribution is estimated using the formula
 \eqn{\mathtt{ranvar}=(A^2-1)/12}{ranvar=(A^2-1)/12} where
 A is the number of response options. While the rectangular distribution is
 widely used, other random values may be more appropriate.}
+ \item{listwise}{Performs listwise deletion of missing values in scale items.
+Listwise deletion was the default prior to version 2.8 but is not recommended.
+Option is included for backward compatability.}
 }
 
 \value{
